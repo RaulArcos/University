@@ -1,7 +1,0 @@
-#include <stdio.h>
-
-int recursividad(int v[], int n){
-
-  if caso_base
-
-}
