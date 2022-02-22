@@ -1,0 +1,7 @@
+[client]
+host = db
+port = 3306
+database = uca_quiz
+user = root
+password = 1001
+default-character-set = utf8

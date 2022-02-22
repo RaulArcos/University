@@ -1,0 +1,22 @@
+Para las pruebas de caja negra se ha utilizado el algoritmo voraz de la P1, básicamente rellenamos la estructura \textit{Cell} con los valores de cada celda por defecto y llamamos al procedimienton de ordenación correspondiente, después de eso utilizamos la función voraz de la P1 para colocar la mejor celda en el mapa y se mide el tiempo del proceso completo.
+\\\\
+Se utiliza a continuación como ejemplo la prueba de caja negra de la ordenación rápida.
+\begin{lstlisting}
+//TERCER METODO: ORDENACION RAPIDA.
+    cronometro c3;
+    long int r3 = 0;
+    c3.activar();
+    do{
+        CellRapida(cell, 0, N-1);
+
+       while(currentDefense != defenses.end()) {
+            pos = voraz(freeCells,cell,nCellsWidth, nCellsHeight, mapWidth, mapHeight, obstacles, defenses, (*currentDefense)->radio,(*currentDefense)->id,N);
+            (*currentDefense)->position.x = pos.x;
+            (*currentDefense)->position.y = pos.y;
+            (*currentDefense)->position.z = 0; 
+            ++currentDefense;
+        }	 
+        ++r3;
+    }while(c3.tiempo() < e_abs / e_rel + e_abs);
+    c3.parar();
+\end{lstlisting}

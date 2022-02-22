@@ -1,0 +1,19 @@
+\begin{lstlisting}
+int j = ases-2;
+    int i;
+    
+    //Busqueda de la solucion
+    for(i = defenses.size() - 2; i > 0 ; i--)
+    {
+        if(table[i][j] != table[i-1][j])
+        {
+            selectedIDs.push_back(i+1);
+            j -= cost[i];
+        }
+    }
+    if(i == 0 && cost[i] <= j)
+    {
+        selectedIDs.push_back(i+1);
+        j -= cost[i];
+    }  
+\end{lstlisting}

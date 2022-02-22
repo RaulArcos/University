@@ -1,0 +1,2 @@
+El make file me daba error desde el principio "recipe for target 'main' failed".
+No he podido realizarlo, igualmente al compilar el main tengo un printf(); y no imprime nada a pesar de que el programa termina.

@@ -1,0 +1,15 @@
+La única función voraz con la que cuento ya fué incluida en el ejercicio 3, 
+se puede observar que una vez pasada la factibilidad se pregunta si la id (de la defensa) es 0.
+//
+En ese mismo else, podemos ver que es el valor que se le otorgan a las celdas cuando se tiene en cuenta que son 
+defensas, aquí hay un fragmento del código de \textit{cellValue} que indica el valor que otorgará a las celdas 
+cuando estamos teniendo en cuenta que son para defensas:
+\begin{lstlisting}
+if(central)
+        value = (1000 - distanceCellToCenter)/nearObstacle;
+    else
+    //En cambio para las defensas, buscamos que rodeen a la posición de la central de extracción.
+        value = (1000 - distanceCellToDefenseZero);
+    
+    return value;
+\end{lstlisting}

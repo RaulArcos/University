@@ -1,0 +1,22 @@
+\begin{lstlisting}
+void CellRapida (Cell *cell, int i, int j){
+    if (i<j){
+
+        //Pivote
+        int p = i; 
+        Cell aux = cell[i];
+	    for (int k = i+1; k<=j; k++)
+		    if (cell[k].valor > aux.valor)
+            {
+			    p++;
+			    std::swap(cell[p], cell[k]);	
+		    }
+	    
+        cell[i] = cell[p];
+	    cell[p] = aux;
+        //End-Pivote
+        CellRapida(cell, i, p-1);
+        CellRapida(cell, p + 1, j);
+    }
+}
+\end{lstlisting}

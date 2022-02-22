@@ -1,0 +1,37 @@
+para la aplicación web hemos utilizado un dockerfile identico al de la práctica 1 y lo hemos construido con el comando
+
+docker build . -t raularcos/p2vs:webp2
+donde tal y como dice la documentación de docker, la tag de la imagen debe tener la siguiente estructura: usuario/repositorio:tag.
+
+par apoder realizar el push de la imagen al directorio tenemos que logearnos en nuestra cuenta de docker en la terminal, con la linea:
+
+docker login y siguiendo los pasos que la propia terminal proporciona.
+
+Depsués utilizamos la linea:
+
+docker push raularcos/p2vs:webp2 para subir la imagen al repositorio.
+
+suponiendo que tenemos minikube iniciado, procedemos a la creación del dployment utilizando kubectl, con la linea:
+
+kubectl create deployment pr2 --image=raularcos/p2vs:webp2
+
+es recomendable chequear el estado del pod para asegurarse de que esta corriendo sin errores, con la linea:
+
+kubectl describe pods
+
+ahora realizamos un expose del deployment para poder acceder a el desde fuera:
+
+kubectl expose deployment/pr2 --type="NodePort" --port:80
+
+Comprobamos con:
+
+kubectl get services
+
+para acceder, utilizamos miniduke ip para saber la ip y con el puerto del nodo obtenido con get services de nuestro NodePort podemos acceder en el navegador o en la terminal.
+
+------------------------------------------
+YAML
+
+kubectl apply  -f dockerp2vs.yaml 
+
+Esta línea hace el deploy de webp2 con las especificaciones del yaml.

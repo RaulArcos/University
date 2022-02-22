@@ -1,0 +1,25 @@
+\begin{lstlisting}
+void fusionFinal(Cell cell[], int i, int k, int j, int N){
+    int n = j-i+1, p = i, q = k+1;
+    Cell aux[N];
+    for (int a = 0; a <= n; a++){
+        if (p <= k && (q > j || cell[p].valor >= cell[q].valor)){
+            aux[a] = cell[p];
+            p++;
+        } else {
+            aux[a] = cell[q];
+            q++;
+        }
+        cell[i+a]=aux[a];
+    }
+}
+
+void ordenacionFusion(Cell cell[], int i, int j, int N){
+    if (i<j){
+        int k=(i+j)/2;
+        ordenacionFusion(cell, i, k, N);
+        ordenacionFusion(cell, k + 1, j, N);
+        fusionFinal(cell, i, k, j, N);
+    }
+}
+\end{lstlisting}

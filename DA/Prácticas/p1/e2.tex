@@ -1,0 +1,15 @@
+
+Para la factibilidad, se ha utilizado una función que devuelve un booleano que 
+indica si una celda es factible (true o 1) o si no lo es (false o 0).
+La función consiste en tres filtros:
+\begin{itemize}
+    \item \textbf{Límites del mapa}, contando con el radio
+    de la propia defensa, es decir, la suma de la posición de la celda y el radio no sobrepasa los límites del mapa.
+    \item \textbf{Colisión con obstáculo}, buscamos que la celda no colisione con ningún obstáculo 
+    que esté repartido por el mapa.
+    \item \textbf{Colisión con defensa}, A medida que vamos añadiendo defensas al 
+    tablero, es muy posible que nos topemos con celdas que colisionan con defensas, por lo que es un punto a evitar.
+\end{itemize}
+Para llevar a cabo la función se ha hecho uso de las funciones auxiliares \textit{cellCenterToPosition} y \textit{positionToCell}, proporcionadas
+en el apartado de preguntas frecuentes del campus.
+\pagebreak

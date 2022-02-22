@@ -1,0 +1,11 @@
+Una vez colocado el centro de extracción, el valor otorgado al resto de defensas 
+irá enfocado a rodear el centro de extracción.
+\\
+En mi caso, como se comenta brevemente en el punto anterior, otorgo el valor a las celdas con la función \textit{cellValue}, que 
+mediante una flag determina si estamos colocando el centro de extracción o una simple defensa, 
+por lo que una vez tenemos el centro de extracción en la posición (en mi  opinión) óptima, lo rodeamos de 
+defensas para alargar lo máximo posible el alcance de los UCOS a esta.
+\\
+La ecuación para determinar el valor es la siguiente: \textit{value = 1000 - (distancia al centro de extracción)}.
+\\
+He elegido este método debido a que al rodear al centro, hay menos huecos que no entren en el radio de ataque de las defensas por los que puedan pasar los UCOS.

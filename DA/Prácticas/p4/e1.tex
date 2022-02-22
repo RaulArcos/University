@@ -1,0 +1,18 @@
+Para la resolución de este problema vamos a utilizar el algoritmo estrella visto en la asignatura.
+\\
+El código utilizado es una traducción a C++ del pseudocódigo enseñado en las diapositivas de la asignatura.
+\\
+Este algoritmo expande el arbol de forma ordenada, necesita una heurística, que en este caso es la distancia entre dos vértices (estimada).
+\\
+Las estructuras de datos utilizadas para el algoritmo son las siguientes:
+\begin{itemize}
+    \item \textbf{AStarNode}, utilizada tanto individualmente como en forma de vector de nodos, utilizada para representar el conjunto de nodos abiertos,cerrados y el nodo actual por separado.
+\end{itemize}
+El algoritmo funciona de manera que se mide la distancia de cada casilla del mapa respecto a la de las defensas del mapa de manera que los UCOS traten de ir directos a la defensa 0 esquivando el rango del resto de las defensas.
+\\
+Se realiza, tal y como visto en las diapositivas de la asignatura las siguientes operaciones:
+\begin{itemize}
+    \item \textbf{push()}, introducimos el elemento en el montículo.
+    \item \textbf{pop()}, extraemos el tope del montículo.
+    \item \textbf{update()}, ordenamos el montículo en el orden segun nuestra condicion (en nuestro caso que distancia de a 'mayor' distancia de b).
+\end{itemize}

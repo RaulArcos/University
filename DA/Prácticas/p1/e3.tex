@@ -1,0 +1,33 @@
+\begin{lstlisting}
+Vector3 voraz(int nCellsWidth, int nCellsHeight, float mapWidth, float mapHeight, List<Object*> obstacles, List<Defense*> defenses, float radio, int id)
+{
+    float cellWidth = mapWidth / nCellsWidth;
+    float cellHeight = mapHeight / nCellsHeight; 
+    float cellValues[nCellsWidth][nCellsHeight];
+    float max = 0;
+    Vector3 pos;
+
+    for(int i = 0; i < nCellsWidth; i++){
+        
+        for(int j = 0; j < nCellsHeight; j++){
+            
+            if(factibilidad(i, j, obstacles, defenses, mapWidth, mapHeight, nCellsWidth, nCellsHeight, radio))
+            {             
+                //Valor de la celda en el caso de ser la central
+                if(id == 0)                
+                    cellValues[i][j] = cellValue(i, j, nCellsWidth, nCellsHeight, mapWidth, mapHeight, obstacles, defenses,1);           
+                //Valor de la celda en caso de ser defensa
+                else
+                    cellValues[i][j] = cellValue(i, j, nCellsWidth, nCellsHeight, mapWidth, mapHeight, obstacles, defenses,0);
+                //Guardamos en 'max' la celda con mayor valor.
+                if (cellValues[i][j] > max)
+                {
+                    max = cellValues[i][j];
+                    pos = cellCenterToPosition(i, j, cellWidth, cellHeight);
+                }
+            }
+        }
+    }
+    return pos;
+}
+\end{lstlisting}

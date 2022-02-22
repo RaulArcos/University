@@ -1,0 +1,11 @@
+Un algoritmo voraz se compone de las sigueintes características:
+\begin{itemize}
+\item \textbf{Conjunto de candidatos}, Todas las celdas que forman el mapa.
+\item \textbf{Conjunto de candidatos seleccionados}, Todas las celdas factibles.
+\item \textbf{Función solución}, La función encargada de la colocación de defensas, en nuestro caso, \textbf{placeDefense}.
+\item \textbf{Función de selección}, La función que selecciona la celda con un valor más alto, tanto para el centro como las defensas, en mi caso se llama \textbf{voraz}.
+\item \textbf{Función de factibilidad}, Función que determina si una celda es utilizable, vista en el ejercicio 2.
+\item \textbf{Función objetivo}, Para esto usamos la función CellValue, que determina un valor diferente para el centro que para las defensas con el uso de la flag \textit{centro}.
+\item \textbf{Objetivo}, Evitar durante el mayor tiempo posible que los UCOS destruyan el centro de extracción.
+\end{itemize}
+\pagebreak

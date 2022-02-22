@@ -1,0 +1,7 @@
+Vettel/Juan Perez/1/100/0/OFF/200/0/0/JGD/jp123/
+Perk243/Pedro Mieres/5/100/0/ON/400/0/0/ADM/pm213/
+Man091/Manuel Campana/8/100/0/OFF/100/13/0/JGD/mc987/
+Mrpvb2000/Pablo/1/100/0/EJ/100/0/0/JGD/vel123/
+Lagares/Jesus/1/100/0/EJ/100/0/0/ADM/jes890/
+RaulArcos/Raul/1/100/0/EJ/90/0/0/ADM/patata/
+fernandoalonso/fernando/1/100/0/OFF/100/0/0/JGD/patata/

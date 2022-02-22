@@ -1,0 +1,23 @@
+Escriba aquí su respuesta al ejercicio 1. 
+
+% Elimine los símbolos de tanto por ciento para descomentar las siguientes instrucciones e incluir una imagen en su respuesta. La mejor ubicación de la imagen será determinada por el compilador de Latex. No tiene por qué situarse a continuación en el fichero en formato pdf resultante.
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.7\linewidth]{./defenseValueCellsHead} % no es necesario especificar la extensión del archivo que contiene la imagen
+%\caption{Estrategia devoradora para la mina}
+%\label{fig:defenseValueCellsHead}
+%\end{figure}
+
+En el caso del centro de extracción de minerales se han tenido en cuenta dos
+factores valorar la mejor celda.
+\begin{itemize}
+    \item \textbf{Distancia respecto al centro} Se valorarán positivamente las celdas que se encuentren próximas al centro, 
+    puesto que es el punto más alejado de la aparición de los UCOS.
+    \item \textbf{Distancia respecto a obstáculos} Se valorará negativamente la cercanía
+    a un obstáculo debido a que los obstáculos no protegen a las defensas de los proyectiles, por lo que es un entorpecimiento a la hora de hacer 
+    formaciones en el mapa.
+\end{itemize}
+
+El valor final resulta de la ecuación: \textit{1000 - Distancia al centro / Factor de distancia a obstáculo}, siendo factor de distancia a obstáculo un número del 0 al 1, donde 0 es la completa ausencia de un obstáculo mientras que 1 es distancia cero con uno.
+\\
+Esto es así debido a que ese valor depende del tamaño del mapa, es decir, no es lo mismo tener un obstáculo a 20 unidades en un mapa de 40 que en un mapa de 100.

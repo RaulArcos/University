@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: p2vs
+  labels:
+    app: webp2
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: pr2
+  template:
+    metadata:
+      labels:
+        app: pr2
+    spec:
+      containers:
+      - name: pr2
+        image: raularcos/p2vs:webp2
+        ports:
+        - containerPort: 80

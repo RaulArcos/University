@@ -1,0 +1,34 @@
+\begin{lstlisting}
+ //Compramos la primera defensa (Central)
+    std::list<Defense*>::iterator currentDefense = defenses.begin();
+    selectedIDs.push_back((*currentDefense)->id);
+    ases-=(*currentDefense)->cost;
+    currentDefense++;
+    
+    //Declaramos una matriz dinamica que usaremos como tabla de defensas-ases.
+    float** table =  new float*[defenses.size()-1];
+    //Creamos un vector para el coste (peso) de cada defensas
+    int cost[defenses.size()-1];
+
+    //Inicializamos tanto el vector de coste como la tabla TSR
+    for(int i = 0; i < (defenses.size() - 1); i++)
+    {
+        table[i] = new float[ases];
+        cost[i]=(*currentDefense)->cost;
+        
+        for(int j = 0; j < ases; j++)
+            if(j < cost[i])
+                //Si no es la primera defensa (Sin contar la central)
+                if((*currentDefense)->id != 1) 
+                    table[i][j] = table[i-1][j];
+                else
+                    table[i][j] = 0;  
+            else 
+                //Si no es la primera defensa (Sin contar la central)   
+                if((*currentDefense)->id != 1)
+                    table[i][j]=std::max(table[i-1][j], (table[i-1][j-cost[i]]+value((*currentDefense))));
+                else
+                    table[i][j] = value((*currentDefense));
+        currentDefense++;
+    }
+\end{lstlisting}

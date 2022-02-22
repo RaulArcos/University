@@ -1,0 +1,36 @@
+COMANDOS QUE HEMOS IDO USANDO
+hemos utilizado 
+docker run -p 3306:80 --name db -it -e MARIADB_ROOT_PASSWORD=1001 -d mariadb:latest
+
+para montar el container de mariadb pero primero hemos tenido que ejecutar:
+ un pull para tener la imagen de mariadb
+ docker pull mariadb:latest
+0. crear mariadb 
+1. crear docker cliente
+2. crear network bridge
+3. conectar mariadb a network
+4. conectar cliente a network
+
+docker network connect --ip 10.0.0.20 p1vs db
+
+ponemos la ip asiganda en el mariadb conf
+
+docker network create --driver=bridge --subnet=10.0.0.0/8 p1vs
+
+docker build . --tag web
+
+docker run -itd --network p1vs --name web -p 80:80 -d web:latest
+
+pa saber la IP del docker dentro de la maquina
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
+
+la ip da igual, hay que hacerle domain
+docker run --name=db --hostname=db.p1 -p 3306:4545 --network=p1vs
+
+
+AL FINAL NO HACIA FALTA PONER EL PUERTO
+Comandos finales
+docker run --network p1vs --name web -p 80:80 -it 5be6bafab9f1
+docker run --name=db --network p1vs 231102ddbba1
+
+Al final resulta que teniamos PROBLEMAS DIGAMOS NO SE TU SABRAS y estabamos poniendo mismo nombre de db 

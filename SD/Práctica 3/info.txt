@@ -1,0 +1,3 @@
+{"dni" : "98787988w" , "nombre" : "Pepe Alcornoque" , "correo" : "pepealcornoque@gmail.es" , "departamento" :  "holaaa" , "categoria" : "Becario" , "asignatura" : ""}
+{"dni" : "77175937x" , "nombre" : "Manuel Gomez" , "correo" : "manuel@gmail.com" , "departamento" :  "asd" , "categoria" : "PAS" , "asignatura" : ""}
+{"dni" : "77175935x" , "nombre" : "Raul Arcos Herrera" , "correo" : "1.raularcos@gmail.com" , "departamento" :  "IIG" , "categoria" : "PDI" , "asignatura" : "['EDNL', 'POO']"}

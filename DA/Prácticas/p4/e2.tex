@@ -1,0 +1,54 @@
+Codigo del algoritmo A Estrella utilizado:
+\\
+\begin{lstlisting}
+//Para resolver esta practica utilizaremos el algoritmo A Estrella facilitado en las diapositivas del tema 4.
+
+    AStarNode* current = originNode; //Cur
+    std::vector<AStarNode*> o; //Opened
+    std::vector<AStarNode*> c; //Closed
+    bool found = false;
+
+    current->G = 0;
+    //estimatedDistance((cur,target) + additional cost)
+    current->H = (estimatedDistance(current->position, targetNode->position)) + additionalCost[(int)(current->position.x/cellsWidth)][(int)(current->position.y/cellsHeight)];
+    //std::cout << "ESTIMATED DISTANCE = " << current->H << std::endl;
+    current->parent = NULL;
+    current->F = current->G + current->H;
+
+    //Comienzo del algoritmo A*
+    o.push_back(current);
+    std::make_heap(o.begin(), o.end(), condition);
+    while(!found && !o.empty()){
+        current = o.back();
+        o.pop_back();
+        c.push_back(current);
+        if(current == targetNode)
+            found = true;
+        else{
+            for(List<AStarNode*>::iterator it = current->adjacents.begin(); it != current->adjacents.end(); it++)
+            {
+                if(!perteneceNodo(c,(*it)))
+                    if(!perteneceNodo(o,(*it))){
+                        
+                        (*it)->parent = current;
+                        (*it)->G = current->G + estimatedDistance(current->position,(*it)->position);
+                        (*it)->H = estimatedDistance((*it)->position, targetNode->position) + additionalCost[(int)(*it)->position.x/cellsWidth][(int)(*it)->position.y/cellsHeight];
+                        (*it)->F = (*it)->G + (*it)->H;
+                        o.push_back((*it));
+                        std::make_heap(o.begin(), o.end(), condition);
+                        std::sort_heap(o.begin(), o.end(), condition);
+                    }
+                    else
+                        if((*it)->G > current->G + estimatedDistance(current->position, (*it)->position)){
+                            
+                            (*it)->parent = current;
+                            (*it)->G = current->G + estimatedDistance(current->position, (*it)->position);
+                            (*it)->F = (*it)->G + (*it)->H;
+                            std::make_heap(o.begin(), o.end(), condition);
+                            std::sort_heap(o.begin(), o.end(), condition);
+                        }
+            }
+                
+        }
+    }
+\end{lstlisting}
