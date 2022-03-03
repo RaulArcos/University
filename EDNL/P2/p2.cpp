@@ -4,14 +4,14 @@ Práctica 2 EDNL by Raúl Arcos Herrera
 
 #include <iostream>
 #include <fstream>
-#include "p1.h"
+#include "p2.h"
 using namespace std;
 typedef char tElto;
 const tElto fin = '#'; // Fin de lectura.
 int main ()
 {
    
-Abin<tElto> A;
+Abin<tElto> A,B;
 /*
  cout << "*** Lectura del árbol binario A ***\n";
  rellenarAbin(A, fin); // Desde std::cin
@@ -27,6 +27,18 @@ Abin<tElto> A;
 ifstream fe("../abin.dat"); // Abrir fichero de entrada.
 rellenarAbin(fe, A); // Desde fichero.
 fe.close();
-cout << "\n*** Mostrar árbol binario B ***\n";
+ifstream fe2("../abinb.dat"); // Abrir fichero de entrada.
+rellenarAbin(fe2, B); // Desde fichero.
+fe2.close();
+cout << "\n*** Mostrar árbol binario A ***\n";
 imprimirAbin(A); // En std::cout
+cout << "\n*** Mostrar árbol binario B ***\n";
+imprimirAbin(B); // En std::cout
+
+
+cout << "\n\n\nPRUEBAS DE LA P2\n--------------------------------" <<endl;
+if(similaresAbin(A,B))
+    cout << "Los arboles A y B SON SIMILARES." << endl;
+else 
+    cout << "Los arboles A y B NO SON SIMILARES." << endl;
 }

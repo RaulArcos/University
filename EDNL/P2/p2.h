@@ -17,14 +17,15 @@ similares.
 */
 template <typename T>
 bool similaresAbin(Abin<T>& A,Abin<T>& B){
-    return pseudocompletoRec(A,B,A.raiz(),B.raiz);
+    return similaresAbinRec(A.raiz(),B.raiz(),A,B);
 }
 template <typename T>
-bool similaresAbinRec(Abin<T>& A, Abin<T>& B,const typename Abin<T>::nodo na,const typename Abin<T>::nodo nb){
-    if(na == nb == Abin<T>::NODO_NULO)
-        return true;
-    else 
-        
+bool similaresAbinRec(const typename Abin<T>::nodo na,const typename Abin<T>::nodo nb, Abin<T>& A, Abin<T>& B){
+
+    if((na == Abin<T>::NODO_NULO && nb != Abin<T>::NODO_NULO) || (na != Abin<T>::NODO_NULO && nb == Abin<T>::NODO_NULO) || )
+        return false;
+    else
+        return true && similaresAbinRec(A.hijoIzqdo(na),B.hijoIzqdo(nb),A,B) && similaresAbinRec(A.hijoDrcho(na),B.hijoDrcho(nb),A,B);
 }
 
 
