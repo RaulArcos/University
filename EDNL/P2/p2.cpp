@@ -41,4 +41,7 @@ if(similaresAbin(A,B))
     cout << "Los arboles A y B SON SIMILARES." << endl;
 else 
     cout << "Los arboles A y B NO SON SIMILARES." << endl;
+
+cout << "Arbol A reflejado: " << endl;
+imprimirAbin(reflejado(A));
 }
