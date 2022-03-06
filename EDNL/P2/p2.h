@@ -35,7 +35,7 @@ subárboles izquierdo y derecho en cada nodo. Implementa un subprograma que devu
 el árbol binario reflejado de uno dado.
 */
 template <typename T>
-Abin<T>& reflejado( Abin<T> &A)
+Abin<T> reflejado( Abin<T> &A)
 {
     Abin<T> B;
     B.insertarRaiz(A.elemento(A.raiz()));
