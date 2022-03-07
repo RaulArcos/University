@@ -4,7 +4,7 @@ Práctica 2 EDNL by Raúl Arcos Herrera
 
 #include <iostream>
 #include <fstream>
-#include "p2.h"
+#include "p2ej3.h"
 using namespace std;
 
 /*
@@ -57,5 +57,5 @@ else
 cout << "Arbol A reflejado: " << endl;
 imprimirAbin(reflejado(A));
 */
-//cout << "El resultado de la operación del Árbol C = " << operacionesAbin(C) << endl;
+cout << "El resultado de la operación del Árbol C = " << operacionesAbin(C) << endl;
 }
