@@ -43,7 +43,4 @@ if(pseudocompleto(A))
     cout << "El arbol ES pseudocompleto." << endl;
 else
     cout << "El arbol NO ES pseudocompleto." << endl;
-
-cout << "Arbol A reflejado: " << endl;
-imprimirAbin(reflejado(A));
 } 

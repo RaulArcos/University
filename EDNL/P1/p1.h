@@ -62,10 +62,12 @@ int desequilibrioNodo(Abin<T>& A, const typename Abin<T>::nodo n){
     return std::abs(A.alturaNodoRec(A.hijoIzqdo(n)) - A.alturaNodoRec(A.hijoDrcho(n)));
 }
 
-template <typename T>
-int desequilibrioAbin(Abin<T>&A){
-    return desequilibrioAbinRec(A,A.raiz());
-}
+//RECORDAR: la alura de un arbol de un solo nodo es 1, y de un arbol vacío es -1.
+
+template <typename T>                           
+int desequilibrioAbin(Abin<T>&A){             
+    return desequilibrioAbinRec(A,A.raiz());   
+}                                               
 
 template <typename T>
 int desequilibrioAbinRec(Abin<T>&A, const typename Abin<T>::nodo n){

@@ -29,7 +29,7 @@ Abin<tElto> A,B,C;
  cout << "\n*** Lectura de árbol binario B de abin.dat ***\n";
  
 */
-/*
+
 //IMPRIME EL ARBOL B A PARTIR DEL FICHERO ABIN.DAT
 ifstream fe("../abin.dat"); // Abrir fichero de entrada.
 rellenarAbin(fe, A); // Desde fichero.
@@ -41,13 +41,10 @@ cout << "\n*** Mostrar árbol binario A ***\n";
 imprimirAbin(A); // En std::cout
 cout << "\n*** Mostrar árbol binario B ***\n";
 imprimirAbin(B); // En std::cout
-*/
-ifstream fe3("../abinc.dat"); // Abrir fichero de entrada.
-rellenarAbin(fe3, C); // Desde fichero.
-fe3.close();
 
 
-/*
+
+
 cout << "\n\n\nPRUEBAS DE LA P2\n--------------------------------" <<endl;
 if(similaresAbin(A,B))
     cout << "Los arboles A y B SON SIMILARES." << endl;
@@ -56,6 +53,5 @@ else
 
 cout << "Arbol A reflejado: " << endl;
 imprimirAbin(reflejado(A));
-*/
-//cout << "El resultado de la operación del Árbol C = " << operacionesAbin(C) << endl;
+
 }
