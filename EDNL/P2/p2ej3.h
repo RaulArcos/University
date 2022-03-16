@@ -30,6 +30,9 @@ devuelva el resultado de la misma. Por simplificar el problema se puede asumir q
 aritmética serán suma, resta, multiplicación y división.
 */
 
+
+//HABIA QUE HACERLO CON UNA STRUCTURA QUE TUBIESE UN CAMPO DOUBLE Y OTRO CAMPO ENUM
+
 double operacionesAbin(const Abin<string>& A){
     if(A.arbolVacio())
         return 0;
