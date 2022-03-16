@@ -1,0 +1,42 @@
+CRITICAL - 2022-03-16 08:08:22 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension()
+#1 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\public\index.php(28): require('...')
+#4 {main}
+CRITICAL - 2022-03-16 08:08:30 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension()
+#1 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\public\index.php(28): require('...')
+#4 {main}
+CRITICAL - 2022-03-16 08:08:46 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\AppServ\www\CodeigniterPrueba\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension()
+#1 C:\AppServ\www\CodeigniterPrueba\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\AppServ\www\CodeigniterPrueba\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\AppServ\www\CodeigniterPrueba\public\index.php(28): require('...')
+#4 {main}
+CRITICAL - 2022-03-16 08:09:05 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension()
+#1 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\public\index.php(28): require('...')
+#4 {main}
+CRITICAL - 2022-03-16 08:14:01 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension()
+#1 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\public\index.php(28): require('...')
+#4 {main}
+CRITICAL - 2022-03-16 08:16:37 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension()
+#1 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\public\index.php(28): require('...')
+#4 {main}
+CRITICAL - 2022-03-16 08:17:15 --> The framework needs the following extension(s) installed and loaded: intl.
+#0 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(219): CodeIgniter\Exceptions\FrameworkException::forMissingExtension()
+#1 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\CodeIgniter.php(177): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#3 C:\Users\1raul\Desktop\University\PW\CodeigniterPrueba\public\index.php(28): require('...')
+#4 {main}
