@@ -15,20 +15,20 @@ class Fecha{
     public:
         
         //Métodos constructores
-        Fecha(int dia = 0, int mes = 0, int anno = 0);
+        explicit Fecha(int dia = 0, int mes = 0, int anno = 0);
         Fecha(const char* cad);
-        Fecha(const Fecha& f);
+        Fecha(const Fecha& f)= default;
 
         //Método Destructor
-        ~Fecha();
+        ~Fecha() = default;
 
         //Métodos observadores
-        int dia();
-        int mes();
-        int anno();
+        int dia() const noexcept;
+        int mes() const noexcept;
+        int anno() const noexcept;
 
         //Conversión de Fecha a cadena de bajo nivel
-        Fecha &operator =(const Fecha& f);
+        const char* cadena() const noexcept;
 
         //Operador de Asignación
         Fecha &operator =(const Fecha& f) = default;
@@ -36,16 +36,15 @@ class Fecha{
         //Operadores Aritméticos.
         Fecha &operator +=(int); 
         Fecha &operator -=(int);
-        Fecha operator +(int);
-        Fecha operator -(int);
+        Fecha operator +(int) const;
+        Fecha operator -(int) const;
         Fecha operator ++(int);
         Fecha operator --(int);
         Fecha &operator ++();
         Fecha &operator --();
 
         //Clase Inválida para la expresión de errores.
-        class Invalida
-        {
+        class Invalida{
             public:
             //Método constructor de la clase Inválida
             Invalida(const char* c):cadena_error(c){}
@@ -56,10 +55,13 @@ class Fecha{
             
             const char* cadena_error;
         };
+        //Declaración de las variables año máximo y mínimo
+        static const int AnnoMinimo = 1902;
+        static const int AnnoMaximo = 2037;
 
     private:
         int dia_,mes_,anno_;
-         void FechaCeros();  //Comprueba si dia,mes o anno es 0, en caso afirmativo lo sustituye por la fecha actual.
+        void FechaCeros();  //Comprueba si dia,mes o anno es 0, en caso afirmativo lo sustituye por la fecha actual.
         void FechaValida(); //Comprueba que la Fecha es válida.
         void actualiza(); //Normaliza la Fecha obtenida.
 
