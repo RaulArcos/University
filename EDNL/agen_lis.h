@@ -1,7 +1,10 @@
 #ifndef AGEN_LIS_H
 #define AGEN_LIS_H
 #include <cassert>
+<<<<<<< HEAD
 #include <iostream>
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 #include "listaenla.h"
 template <typename T> class Agen {
 public:
@@ -18,7 +21,10 @@ void eliminarRaiz();
 bool arbolVacio() const;
 const T& elemento(nodo n) const; // acceso a elto, lectura
 T& elemento(nodo n); // acceso a elto, lectura/escritura
+<<<<<<< HEAD
  30
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 nodo raiz() const;
 nodo padre(nodo n) const;
 nodo hijoIzqdo(nodo n) const;
@@ -39,7 +45,10 @@ size_t numNodos; // número de nodos del árbol
 /* Definición del nodo nulo */
 template <typename T>
 const typename Agen<T>::nodo Agen<T>::NODO_NULO(SIZE_MAX);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline Agen<T>::Agen(size_t maxNodos) :
 nodos(new celda[maxNodos]), // Se crean las listas de
@@ -59,7 +68,10 @@ numNodos = 1;
 nodos[0].elto = e;
 // La lista de hijos está vacía.
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 void Agen<T>::insertarHijoIzqdo(Agen<T>::nodo n, const T& e)
 {
@@ -77,7 +89,10 @@ Lista<nodo>& Lh = nodos[n].hijos; // Lista de hijos.
 Lh.insertar(hizqdo, Lh.primera());
 ++numNodos;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 void Agen<T>::insertarHermDrcho(Agen<T>::nodo n, const T& e)
 {
@@ -96,7 +111,10 @@ Lista<nodo>& Lhp = nodos[nodos[n].padre].hijos; // Lista de hijos
 Lhp.insertar(hedrcho, Lhp.siguiente(Lhp.buscar(n)));
 ++numNodos;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 void Agen<T>::eliminarHijoIzqdo(Agen<T>::nodo n)
 {
@@ -115,7 +133,10 @@ Lh.eliminar(lh.primera()); // Eliminar primer nodo de la
 // lista de hijos de n.
 --numNodos;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 void Agen<T>::eliminarHermDrcho(Agen<T>::nodo n)
 {
@@ -137,7 +158,10 @@ Lhp.eliminar(p); // Eliminar hermano de la lista
 // de hijos del padre.
 --numNodos;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline void Agen<T>::eliminarRaiz()
 {
@@ -157,7 +181,10 @@ assert(n >= 0 && n <= maxNodos-1); // n es una celda del vector
 assert(n == 0 || nodos[n].padre != NODO_NULO); // que está ocupada
 return nodos[n].elto;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline T& Agen<T>::elemento(Agen<T>::nodo n)
 {
@@ -179,7 +206,10 @@ assert(n >= 0 && n <= maxNodos-1); // n es una celda del vector
 assert(n == 0 || nodos[n].padre != NODO_NULO); // que está ocupada
 return nodos[n].padre;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline typename Agen<T>::nodo Agen<T>::hijoIzqdo(Agen<T>::nodo n) const
 {
@@ -192,7 +222,10 @@ return Lh.elemento(Lh.primera());
 else
 return NODO_NULO;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline typename Agen<T>::nodo Agen<T>::hermDrcho(Agen<T>::nodo n) const
 {
@@ -213,7 +246,10 @@ else
 return NODO_NULO;
 }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 Agen<T>::Agen(const Agen<T>& A) :
 nodos(new celda[A.maxNodos]),
@@ -238,10 +274,17 @@ nodos[n] = a.nodos[n];
 }
 return *this;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline Agen<T>::~Agen()
 {
 delete[] nodos; // También destruye las listas de hijos.
 }
+<<<<<<< HEAD
 #endif // AGEN_LIS_H
+=======
+#endif // AGEN_LIS_H
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
