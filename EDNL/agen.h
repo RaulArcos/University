@@ -20,6 +20,10 @@ nodo raiz() const;
 nodo padre(nodo n) const;
 nodo hijoIzqdo(nodo n) const;
 nodo hermDrcho(nodo n) const;
+<<<<<<< HEAD
+=======
+J. F. Argudo; J. A. Alonso; M. T. García EDNL Árboles generales 44
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 Agen(const Agen<T>& a); // ctor. de copia
 Agen<T>& operator =(const Agen<T>& a); // asignación de árboles
 ~Agen(); // destructor
@@ -79,6 +83,10 @@ assert(hizqdo->hizq == NODO_NULO); // Hijo izqdo. es hoja.
 n->hizq = hizqdo->heder;
 delete hizqdo;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline void Agen<T>::eliminarHermDrcho(Agen<T>::nodo n)
 {
@@ -92,6 +100,10 @@ assert(hedrcho->hizq == NODO_NULO); // Hermano drcho. es hoja.
 n->heder = hedrcho->heder;
 delete hedrcho;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline void Agen<T>::eliminarRaiz()
 {
@@ -105,6 +117,10 @@ inline bool Agen<T>::arbolVacio() const
 {
 return (r == NODO_NULO);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline const T& Agen<T>::elemento(Agen<T>::nodo n) const
 {
@@ -117,6 +133,10 @@ inline T& Agen<T>::elemento(Agen<T>::nodo n)
 assert(n != NODO_NULO);
 return n->elto;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T>
 inline typename Agen<T>::nodo Agen<T>::raiz() const
 {
@@ -128,6 +148,10 @@ typename Agen<T>::nodo Agen<T>::padre(Agen<T>::nodo n) const
 assert(n != NODO_NULO);
 return n->padre;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 template <typename T> inline
 typename Agen<T>::nodo Agen<T>::hijoIzqdo(Agen<T>::nodo n) const
 {
@@ -160,6 +184,10 @@ inline Agen<T>::~Agen()
 {
 destruirNodos(r); // Vaciar el árbol.
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 /*--------------------------------------------------------*/
 /* Métodos privados */
 /*--------------------------------------------------------*/
@@ -184,6 +212,10 @@ delete(n);
 n = NODO_NULO;
 }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74292b8bc0edb829e64167d7936f04497ff17f3b
 // Devuelve una copia de un nodo y todos sus descendientes
 template <typename T>
 typename Agen<T>::nodo Agen<T>::copiar(Agen<T>::nodo n)
