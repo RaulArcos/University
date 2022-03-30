@@ -61,6 +61,4 @@ double operacionesAbinRec(typename Abin<string>::nodo n,const Abin<string>& A){
         return res;
     }
 }
-
-
 #endif 
