@@ -14,7 +14,7 @@ class Articulo{
     public:  
 
         //Método constructor
-        Articulo(const Cadena &referencia, const Cadena& titulo, const Fecha& fecha, const double precio);
+        Articulo(const Cadena &referencia, const Cadena& titulo, const Fecha& fecha, const double precio, const unsigned existencia);
 
         //Métodos observadores
         Cadena titulo() const{ return titulo_; }  //Devuelve el titulo
@@ -27,9 +27,6 @@ class Articulo{
         
         //Métodos virtuales
         virtual ~Articulo() {}
-        virtual void impresion_especifica(std::ostream& salida) const noexcept = 0;
-
-        class Autores_vacios{};
 
     private:
         
