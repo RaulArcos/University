@@ -142,9 +142,9 @@ bool operator != (const Fecha& Fecha1, const Fecha& Fecha2){
 }
 //Comprobamos desde año hasta dia si Fecha1 es mayor que Fecha2
 bool operator > (const Fecha& Fecha1, const Fecha& Fecha2) {
-    if(Fecha1.anno() > Fecha2.anno() || 
-        Fecha1.anno() == Fecha2.anno() && Fecha1.mes() > Fecha2.mes() ||
-        Fecha1.anno() == Fecha2.anno() && Fecha1.mes() == Fecha2.mes() && Fecha1.anno() == Fecha2.anno() && Fecha1.dia() > Fecha2.dia())
+    if((Fecha1.anno() > Fecha2.anno()) || 
+        (Fecha1.anno() == Fecha2.anno() && Fecha1.mes() > Fecha2.mes()) ||
+        (Fecha1.anno() == Fecha2.anno() && Fecha1.mes() == Fecha2.mes() && Fecha1.anno() == Fecha2.anno() && Fecha1.dia() > Fecha2.dia()))
         return 1;
     else return 0;
 }

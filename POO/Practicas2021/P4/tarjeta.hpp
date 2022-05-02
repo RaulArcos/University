@@ -95,7 +95,7 @@ class Tarjeta
     Tipo tipo() const {return tipo_tarjeta_;}
     
     //Método modificador de tarjeta activa
-    bool activa(bool valor = true);
+    bool activa(bool valor);
     void anular_titular();
 
     //Clase exepción para tarjeta duplicada.
