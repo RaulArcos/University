@@ -8,6 +8,8 @@ tarjeta.hpp By Raúl Arcos Herrera 2022
 #include "../P1/fecha.hpp"
 #include "usuario.hpp"
 
+class Usuario;
+
 //CLASE NÚMERO
 class Numero{
 
@@ -28,7 +30,7 @@ class Numero{
         };
 
         //Operador de conversión a cadena de bajo nivel:
-        operator const char*() const;
+        operator const char* () const {return numero_.c_str();}
 
         //Definimos el operador <<menor-que>>
         friend bool operator <(const Numero& a, const Numero& b);
@@ -73,7 +75,7 @@ class Tarjeta{
         Tipo tipo() const {return tipo_tarjeta_;}
         
         //Método modificador de tarjeta activa
-        bool activa(bool valor);
+        bool& activa(bool a = true) {activa_ = a; return activa_;}
         void anular_titular();
 
         //Clase exepción para tarjeta duplicada.
@@ -86,7 +88,11 @@ class Tarjeta{
         };
 
         //Clase para desactivar tarjeta.
-        class Desactivada{};
+        class Desactivada {
+            public:
+                //Constructor
+                Desactivada(){}           
+        };
 
     private:
         

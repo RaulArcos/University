@@ -75,7 +75,7 @@ class Usuario{
         
         const art& compra()const noexcept{return articulos_;}
         const size_t n_articulos()const {return articulos_.size();}
-        friend std::ostream& operator<<(std::ostream& salida,const Usuario& a) noexcept;
+        friend std::ostream& operator <<(std::ostream& salida, const Usuario& u) noexcept;
 
         //Manejo de excepciones
         class Id_duplicado{
@@ -95,5 +95,8 @@ class Usuario{
         static std::unordered_set<Cadena> registrados;
     
 };
+std::ostream& operator << (std::ostream &os, const Usuario &u) noexcept;
+std::ostream& mostrar_carro(std::ostream &os, const Usuario &u) noexcept;
+
 
 #endif
