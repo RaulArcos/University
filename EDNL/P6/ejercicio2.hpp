@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #include "../Material_Grafos/alg_grafoPMC.h"
 #include "../Material_Grafos/grafoPMC.h"
 #include "../Material_Grafos/matriz.h"
+
 
 /*
 2. Definiremos el pseudocentro de un grafo conexo como el nodo del mismo que minimiza 
