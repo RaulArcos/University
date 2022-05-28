@@ -1,15 +1,15 @@
-//articulo.hpp Raúl Arcos Herrera
+/*
+articulo.hpp By Raúl Arcos Herrera 2022
+*/
 
 #ifndef ARTICULO_HPP_
 #define ARTICULO_HPP_
 
-#include "fecha.hpp"  //Vamos a utilizar las clases implementadas anteriormente.
-#include "cadena.hpp"
-
+#include "../P1/fecha.hpp"  
+#include "../P1/cadena.hpp"
 #include <set>
 
-using namespace std;
-
+//CLASE AUTOR
 
 class Autor
 {
@@ -30,16 +30,15 @@ class Autor
         Cadena direccion_;
 };
 
+//CLASE ARTICULO
+class Articulo{
+    public:  
 
-class Articulo
-{
-    public:
-        
-        //Coleccion de autores
-        typedef set<Autor*> Autores ; 
+        //Coleccion de Autores
+        typedef std::set<Autor*> Autores ; 
 
         //Método constructor
-        Articulo(const Autores& autor,const Cadena &referencia, const Cadena& titulo, const Fecha& fecha, const double precio);
+        Articulo(const Autores& autor, const Cadena &referencia, const Cadena& titulo, const Fecha& fecha, const double precio);
 
         //Métodos observadores
         Cadena titulo() const{ return titulo_; }  //Devuelve el titulo
@@ -50,23 +49,24 @@ class Articulo
         double& precio(){ return precio_; }
         unsigned& stock(){ return existencias_; }
         const Autores& autores() const {return autores_;}
-        
-        //Métodos virtuales
-        virtual ~Articulo() {}
-        virtual void impresion_especifica(ostream& salida) const noexcept = 0;
 
         class Autores_vacios{};
+
+        //Métodos virtuales
+        virtual ~Articulo() {}
+        virtual void impresion_especifica(std::ostream& salida) const noexcept = 0;
 
     private:
         
         //Declaramos las variables que contiene nuestra clase artículo.
-        Autores autores_ ; 
         Cadena referencia_,titulo_;
+        Autores autores_ ; 
         Fecha fecha_;
         double precio_;
         unsigned existencias_;
 
 };
+
 
 class ArticuloAlmacenable : public Articulo{
 public:
@@ -88,12 +88,10 @@ public:
 			 ArticuloAlmacenable(autores,ref,tit,fp,price,stock),n_pag_(npag) {}
 
     unsigned n_pag() const noexcept { return n_pag_; }
-    void impresion_especifica(ostream& os) const noexcept;
+    void impresion_especifica(std::ostream& os) const noexcept;
 
 private:
     const unsigned n_pag_;
-
-    
 };
 
 class Cederron : public ArticuloAlmacenable{
@@ -102,7 +100,7 @@ public:
     : ArticuloAlmacenable(a, c, t, f, p, stock), tam_(MB) {}
   
   unsigned tam() const noexcept { return tam_; }
-  void impresion_especifica(ostream& os) const noexcept;
+  void impresion_especifica(std::ostream& os) const noexcept;
 
 private:
   const unsigned tam_;
@@ -116,18 +114,13 @@ public:
         : Articulo(a, c, t, fComp, p), f_expir_(fExp) {}
 
     const Fecha& f_expir() const noexcept { return f_expir_; }
-    void impresion_especifica(std::ostream& salida) const{ 
- 			salida << "A la venta hasta el "<< f_expir_ << "."; 
-		}  
+    void impresion_especifica(std::ostream& os) const noexcept;
 
 private:
     const Fecha f_expir_;
-
     
 };
 
-
-//Operador de insercción de flujo de salida.
-ostream& operator <<(ostream& salida, const Articulo& a) noexcept;
+std::ostream& operator << (std::ostream &os, const Articulo &a) noexcept;
 
 #endif
