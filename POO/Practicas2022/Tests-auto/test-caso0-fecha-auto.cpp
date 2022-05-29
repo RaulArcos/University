@@ -41,12 +41,9 @@ FCTMF_FIXTURE_SUITE_BGN(test_fecha) {
   }
   
   FCT_SETUP_BGN() {
-    // 1.º establecemos la zona horaria a UTC para evitar cosas raras
-    setenv("TZ", "", 1);
-    tzset();
-    // y después obtenemos la hora UTC del sistema
+    // Obtenemos la fecha local del sistema
     const time_t ahora =   time(nullptr);
-    const tm*    fecha = gmtime(& ahora);
+    const tm*    fecha = localtime(& ahora);
     annoSistema = fecha->tm_year + 1900;
     mesSistema  = fecha->tm_mon  +    1;
     diaSistema  = fecha->tm_mday +    0;

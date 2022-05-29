@@ -7,6 +7,7 @@ tarjeta.hpp By Raúl Arcos Herrera 2022
 #include "../P1/cadena.hpp"
 #include "../P1/fecha.hpp"
 #include "usuario.hpp"
+#include <set>
 
 class Usuario;
 
@@ -46,6 +47,7 @@ class Tarjeta{
     public:
         //Definimos enumeración pública de nombre Tipo:
         enum Tipo{Otro, VISA, Mastercard, Maestro, JCB, AmericanExpress};
+        typedef  std::set<Numero> num;
 
         //Métodos constructores:
         Tarjeta(const Numero &num, Usuario &usuario,const Fecha &caducidad);
@@ -72,19 +74,20 @@ class Tarjeta{
         Fecha caducidad() const {return caducidad_;}
         bool activa() const{return activa_;}
         
+        
         Tipo tipo() const {return tipo_tarjeta_;}
         
         //Método modificador de tarjeta activa
-        bool& activa(bool a = true) {activa_ = a; return activa_;}
-        void anular_titular();
+        bool activa(bool f=true);
+        void anular_titular(){user_ = nullptr;activa_=false;}
 
         //Clase exepción para tarjeta duplicada.
         class Num_duplicado{
             public:
-                Num_duplicado(const Numero& num): num_(num){}
-                const Numero que() const {return num_;}
+                Num_duplicado(const Numero& n_):n(n_){};
+                const Numero que()const{return n;}
             private:
-                Numero num_;
+                Numero n;
         };
 
         //Clase para desactivar tarjeta.
@@ -98,6 +101,7 @@ class Tarjeta{
         
         //Atributos de la clase Tarjeta:
         const Numero num_;
+        num numeros_;
         const Usuario *user_;
         const Fecha caducidad_;
         bool activa_;

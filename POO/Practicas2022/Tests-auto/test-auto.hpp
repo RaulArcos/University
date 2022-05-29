@@ -13,7 +13,7 @@
 #define TEST_AUTO_HPP_
 
 #if !defined(P0) && !defined(P1) && !defined(P2) && !defined(P3) && !defined(P4)
-#error Debe definir Px siendo x [0..4] el núm. de la práctica a probar
+#error Debe definir Px siendo x | 0 ≤ x ≤ 4 el n.º de la práctica a probar
 #endif
 
 #include <ctime>
@@ -27,8 +27,8 @@
 #include <type_traits>
 #include <locale>
 /**
-   Lamentablemente, <regex>, de la biblioteca estándar de C++11,
-   no funcionaba bien en algunas versiones antiguas: muy mal en GCC C++ 4.8 y 
+   Lamentablemente, aún <regex>, de la biblioteca estándar de C++11,
+   no funciona bien en algunas versiones: muy mal en GCC C++ 4.8 y 
    algo menos, pero no bien, en GCC C++ 4.9. A partir de la versión 5 ya
    funciona bien. En cuanto a CLang, usa la misma biblioteca que GCC de
    forma predeterminada. El problema no es tanto del compilador como de
@@ -78,6 +78,24 @@
            "failed chk_eq_cstr:\n'%s' != '%s'",              \
 	   (const char*)needle, haystack.c_str())
 
+/*********************** ZONA HORARIA ***********************/
+// Es innecesario fijar una zona horaria concreta, si tenemos
+// el cuidado de convertir la fecha del sistema a la zona 
+// horaria local (con la función estándar localtime), cada vez
+// que la utilicemos en el programa de prueba.
+/* Anulamos zona UTC
+// Establecemos la zona horaria a UTC para evitar cosas raras
+struct InicializaTZ {
+   InicializaTZ() { setenv("TZ", "", 1); tzset(); }
+};
+
+// En cada módulo donde se incluya esta cabecera test-auto.hpp
+// se define un objeto estático global InicializaTZ que establece
+// la zona horaria UTC (Universal Time Coordinated) para la 
+// ejecución de las pruebas de unidad definidas en dicho módulo,
+// es decir, el conjunto de pruebas de cada práctica (P0 a P4).
+static InicializaTZ tz;
+*/
 /************************ CLASES ****************************/
 #ifndef CPP11REGEX
 /**

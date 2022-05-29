@@ -66,9 +66,6 @@ FCT_BGN() {
 	 << e.what() << "\nFin del programa" << endl;
     return 1;
   }
-  // Establecemos la zona horaria a UTC para evitar cosas raras
-  setenv("TZ", "", 1);
-  tzset();
 
   /**
      No sirve para nada: simplemente callamos a GCC C++ para que no

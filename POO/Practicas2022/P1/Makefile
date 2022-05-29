@@ -1,26 +1,25 @@
-CXX = g++
-CXXFLAGS = -g -Wall -std=c++11 -pedantic
-CPPFLAGS = -DP1 -I../Tests-auto -I.
 VPATH = ../Tests-auto:.
-DIR = ../Tests-auto/
 
-NOMBREALUMNO = Arcos_Herrera_Raul
 
-all: test-P1-auto test-fechacadena-consola
+CXX = g++								  
 
+CPPFLAGS = -I../Tests-auto -I. -DP1      
+CXXFLAGS = -g -Wall -pedantic -std=c++11 -fpermissive  
+LDFFLAGS = 								
+
+all: test-P0-auto test-fechacadena-consola
+
+test-P0-auto: test-caso0-fecha-auto.o test-caso0-cadena-auto.o \
+			  test-auto.o cadena.o fecha.o #el \ sirve para que siga leyendo abajo
+	$(CXX) -o $@ $(LDFLAGS) $^
+
+test-caso0-fecha-auto.o test-caso0-cadena-auto.o test-auto.o: \
+test-caso0-fecha-auto.cpp test-caso0-cadena-auto.cpp \
+test-auto.cpp test-auto.hpp fecha.hpp cadena.hpp
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $^
+	
 test-fechacadena-consola: test-fechacadena-consola.o fecha.o cadena.o
-	${CXX} -o $@ ${LDFLAGS} $^
-
-test-P1-auto: test-caso0-fecha-auto.o test-caso0-cadena-auto.o test-auto.o cadena.o fecha.o
-	${CXX} -o $@ ${LDFLAGS} $^
-
-test-caso0-fecha-auto.o test-caso0-cadena-auto.o test-auto.o:  test-auto.hpp fecha.hpp cadena.hpp
-
-fecha.o: fecha.hpp
-
-cadena.o: cadena.hpp
-
-test-fechacadena-consola.o: fecha.hpp cadena.hpp
+	$(CXX) -o $@ $(LDFLAGS) $^
 
 clean: 
-	@$(RM) test-fechacadena-consola test-P0-auto *.o
+	$(RM) *.o test-P0-auto test-P0-consola

@@ -15,7 +15,6 @@ bool luhn(const Cadena& num);
 
 
 //CLASE NÚMERO
-
 //Método constructor
 Numero::Numero(const Cadena& num){
 
@@ -53,9 +52,11 @@ bool operator <(const Numero& tar1, const Numero& tar2){
 Tarjeta::Tarjeta(const Numero& num, Usuario& u,const Fecha& caducidad):
 num_(num),user_(&u),caducidad_(caducidad),activa_(true){
 
+    if (numeros_.insert(num_).second==false)
+        throw Num_duplicado(num_);
     if(caducidad_<Fecha()) //Comparamos la fecha de caducidad con la actual.
         throw Caducada(caducidad_);
-    
+     
     //Comprobamos de que tipo es la tarjeta.
     const char* aux = num;
     //Ponemos el valor por defecto:
@@ -74,13 +75,10 @@ num_(num),user_(&u),caducidad_(caducidad),activa_(true){
     u.es_titular_de(*this);
 }
 
-void Tarjeta::anular_titular(){
-    user_= nullptr;
-}
-
 Tarjeta::~Tarjeta(){
     if(Usuario* usu = const_cast<Usuario*>(user_))
         usu->no_es_titular_de(*this);
+    numeros_.erase(num_);
 }
 
 bool operator <(const Tarjeta& t1, const Tarjeta& t2){
@@ -101,6 +99,11 @@ ostream& operator << (ostream& output ,const Tarjeta::Tipo& t){
     }
 
     return output ;
+}
+
+bool Tarjeta::activa(bool f){
+    activa_=f;
+    return activa_;
 }
 
 std::ostream& operator << (std::ostream& output, const Tarjeta& t){

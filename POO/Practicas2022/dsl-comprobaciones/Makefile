@@ -10,9 +10,8 @@
 
 CXX         := clang++
 RTTIFLAG    := -fno-rtti
-LLVMCXXFLAGS :=	\
-	-I/usr/lib/llvm-10/include 
-CXXFLAGS	:= $(LLVMCXXFLAGS) $(RTTIFLAG) -fexceptions
+LLVMCPPFLAGS :=  $(shell llvm-config --cppflags)
+CXXFLAGS	:= $(LLVMCPPFLAGS) $(RTTIFLAG) -fexceptions
 LLVMLDFLAGS	:= $(shell llvm-config --ldflags --system-libs --libs) $(LDFLAGS)
 
 SRCS = caclibrary.cpp execute.cpp matchers.cpp
@@ -35,7 +34,6 @@ CLANGLIBS = \
 	-lclangRewrite\
 	-lclangRewriteFrontend \
 	-luv
-
 
 all: ${OBJS}
 

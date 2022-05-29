@@ -232,20 +232,11 @@ FCTMF_FIXTURE_SUITE_BGN(test_p2) {
   }
   FCT_TEST_END();
 
-  FCT_TEST_BGN(Tarjeta - desactivada) {
-    Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
-    bool a = tarjeta.activa(false);
-    fct_chk(!a);
-    fct_chk_ex(Tarjeta::Desactivada, if (!a) throw Tarjeta::Desactivada());
-    a = tarjeta.activa();
-    fct_chk(a);
-  }
-  FCT_TEST_END();
-
   FCT_TEST_BGN(Tarjeta - duplicada) {
     Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
     try {
       Tarjeta tarjeta2(nTarjeta, *pU, fSiguienteAnno);
+      fct_chk(!"Se esperaba una excepción Tarjeta::Num_duplicado");
     } catch(const Tarjeta::Num_duplicado& ex) {
       fct_chk(ex.que() == nTarjeta);
     }
@@ -253,12 +244,26 @@ FCTMF_FIXTURE_SUITE_BGN(test_p2) {
   FCT_TEST_END();
 
   FCT_TEST_BGN(Tarjeta - observadores) {
-    const Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
-    fct_chk(tarjeta.tipo     () == Tarjeta::Tipo::VISA );
-    fct_chk(tarjeta.numero   () == nTarjeta             );
-    fct_chk(tarjeta.caducidad() == fUnaSemana           );
-    fct_chk(tarjeta.titular  () == pU                   );
-    fct_chk(tarjeta.activa   () == true                 );
+    Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
+    const Tarjeta& ctarjeta = tarjeta;
+    fct_chk(ctarjeta.tipo     () == Tarjeta::Tipo::VISA);
+    fct_chk(ctarjeta.numero   () == nTarjeta           );
+    fct_chk(ctarjeta.caducidad() == fUnaSemana         );
+    fct_chk(ctarjeta.titular  () == pU                 );
+    fct_chk(ctarjeta.activa   () == true               );
+    tarjeta.activa(false);
+    fct_chk(ctarjeta.activa   () == false              );
+  }
+  FCT_TEST_END();
+
+  FCT_TEST_BGN(Tarjeta - activar/desactivar) {
+    Tarjeta tarjeta(nTarjeta, *pU, fUnaSemana);
+    bool a = tarjeta.activa(false);
+    fct_chk(!a);
+    fct_chk(tarjeta.activa() == false);
+    a = tarjeta.activa(true);
+    fct_chk(a);
+    fct_chk(tarjeta.activa() == true);
   }
   FCT_TEST_END();
 
