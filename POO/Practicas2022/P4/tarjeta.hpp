@@ -78,16 +78,16 @@ class Tarjeta{
         Tipo tipo() const {return tipo_tarjeta_;}
         
         //Método modificador de tarjeta activa
-        bool activa(bool f=true);
+        bool activa(bool f);
         void anular_titular(){user_ = nullptr;activa_=false;}
 
         //Clase exepción para tarjeta duplicada.
         class Num_duplicado{
             public:
-                Num_duplicado(const Numero& n_):n(n_){};
-                const Numero que()const{return n;}
+                Num_duplicado(const Numero& n):n_(n){};
+                inline const Numero que() const{return n_;}
             private:
-                Numero n;
+                Numero n_;
         };
 
         //Clase para desactivar tarjeta.
@@ -101,7 +101,7 @@ class Tarjeta{
         
         //Atributos de la clase Tarjeta:
         const Numero num_;
-        num numeros_;
+        static std::set<Numero> numeros_;
         const Usuario *user_;
         const Fecha caducidad_;
         bool activa_;

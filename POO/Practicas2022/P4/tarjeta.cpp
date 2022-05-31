@@ -8,10 +8,8 @@ tarjeta.cpp By Raúl Arcos Herrera 2022
 #include <iomanip>
 #include <iostream>
 
-using namespace std;
-
 bool luhn(const Cadena& num);
-
+std::set<Numero> Tarjeta::numeros_;
 
 
 //CLASE NÚMERO
@@ -52,11 +50,12 @@ bool operator <(const Numero& tar1, const Numero& tar2){
 Tarjeta::Tarjeta(const Numero& num, Usuario& u,const Fecha& caducidad):
 num_(num),user_(&u),caducidad_(caducidad),activa_(true){
 
-    if (numeros_.insert(num_).second==false)
-        throw Num_duplicado(num_);
+    
     if(caducidad_<Fecha()) //Comparamos la fecha de caducidad con la actual.
         throw Caducada(caducidad_);
-     
+    if (numeros_.insert(num).second==false)
+        throw Num_duplicado(num);
+        
     //Comprobamos de que tipo es la tarjeta.
     const char* aux = num;
     //Ponemos el valor por defecto:
@@ -85,7 +84,7 @@ bool operator <(const Tarjeta& t1, const Tarjeta& t2){
     return t1.numero() < t2.numero();
 }
 
-ostream& operator << (ostream& output ,const Tarjeta::Tipo& t){
+std::ostream& operator << (std::ostream& output ,const Tarjeta::Tipo& t){
 
     switch(t){
         case 0: output << "Otro" ; break;
