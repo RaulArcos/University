@@ -8,11 +8,14 @@ tarjeta.cpp By Raúl Arcos Herrera 2022
 #include <iomanip>
 #include <iostream>
 
+using namespace std;
+
 bool luhn(const Cadena& num);
-std::set<Numero> Tarjeta::numeros_;
+
 
 
 //CLASE NÚMERO
+
 //Método constructor
 Numero::Numero(const Cadena& num){
 
@@ -50,12 +53,9 @@ bool operator <(const Numero& tar1, const Numero& tar2){
 Tarjeta::Tarjeta(const Numero& num, Usuario& u,const Fecha& caducidad):
 num_(num),user_(&u),caducidad_(caducidad),activa_(true){
 
-    
     if(caducidad_<Fecha()) //Comparamos la fecha de caducidad con la actual.
         throw Caducada(caducidad_);
-    if (!numeros_.insert(num).second)
-        throw Num_duplicado(num);
-
+    
     //Comprobamos de que tipo es la tarjeta.
     const char* aux = num;
     //Ponemos el valor por defecto:
@@ -74,17 +74,20 @@ num_(num),user_(&u),caducidad_(caducidad),activa_(true){
     u.es_titular_de(*this);
 }
 
+void Tarjeta::anular_titular(){
+    user_= nullptr;
+}
+
 Tarjeta::~Tarjeta(){
     if(Usuario* usu = const_cast<Usuario*>(user_))
         usu->no_es_titular_de(*this);
-    numeros_.erase(num_);
 }
 
 bool operator <(const Tarjeta& t1, const Tarjeta& t2){
     return t1.numero() < t2.numero();
 }
 
-std::ostream& operator << (std::ostream& output ,const Tarjeta::Tipo& t){
+ostream& operator << (ostream& output ,const Tarjeta::Tipo& t){
 
     switch(t){
         case 0: output << "Otro" ; break;
@@ -100,16 +103,12 @@ std::ostream& operator << (std::ostream& output ,const Tarjeta::Tipo& t){
     return output ;
 }
 
-bool Tarjeta::activa(bool f){
-    activa_=f;
-    return activa_;
-}
-
 std::ostream& operator << (std::ostream& output, const Tarjeta& t){
 
 	Cadena aux1 = t.titular()->nombre();
 	Cadena aux2 = t.titular()->apellidos();
-    
+
+
 	for(size_t i=0; i< aux1.length(); i++)
 	    aux1[i] = toupper(aux1[i]);
 	
