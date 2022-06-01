@@ -1,6 +1,6 @@
-/*
-usuario.hpp By Raúl Arcos Herrera 2022
-*/
+/*****************************************
+* usuario.hpp By Raúl Arcos Herrera 2022 *
+******************************************/
 #ifndef USUARIO_HPP_
 #define USUARIO_HPP_
 
@@ -56,7 +56,7 @@ class Usuario{
         //Métodos contructores
         Usuario(const Cadena& id,const Cadena& nombre, const Cadena& apellidos, const Cadena& direccion, const Clave& clave);
         Usuario(const Usuario& )=delete;
-        Usuario& operator=(const Usuario)=delete;
+        Usuario& operator=(const Usuario&)=delete;
         
         //Método destructor
         ~Usuario();

@@ -1,4 +1,6 @@
-//pedido.cpp Raúl Arcos Herrera
+/*****************************************
+* pedido.cpp By Raúl Arcos Herrera 2022  *
+******************************************/
 #include "pedido.hpp"
 
 //Comenzamos con numero de pedidos a 0
@@ -15,7 +17,7 @@ num_(num_pedidos_+ 1),tarjeta_(&tar),fecha_pedido_(f),importe_total_(0){
     //El usuario no tiene articulos en el pedido.
     if(us.n_articulos() == 0){ throw Vacio(us);}
 
-auto aux = us.compra();
+    auto aux = us.compra();
     
     for(auto i : aux){
         if(ArticuloAlmacenable* aa = dynamic_cast<ArticuloAlmacenable*>(i.first)){

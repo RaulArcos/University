@@ -1,4 +1,7 @@
-//Usuario-pedido.cpp Raúl Arcos Herrera
+/************************************************
+* usuario-pedido.cpp By Raúl Arcos Herrera 2022 *
+*************************************************/
+
 #include <iomanip>
 #include <ostream>
 #include "usuario-pedido.hpp"

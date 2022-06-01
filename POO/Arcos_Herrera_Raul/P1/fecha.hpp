@@ -1,6 +1,6 @@
-/*
-Fecha.hpp By Raúl Arcos Herrera 2022
-*/
+/***************************************
+* fecha.hpp By Raúl Arcos Herrera 2022 *
+****************************************/
 
 #ifndef FECHA_HPP_
 #define FECHA_HPP_

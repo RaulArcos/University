@@ -1,4 +1,6 @@
-//pedido-articulo hpp Raúl Arcos Herrera
+/**************************************************
+* pedido-articulo.hpp By Raúl Arcos Herrera 2022  *
+***************************************************/
 
 #ifndef PEDIDO_ARTICULO_HPP_
 #define PEDIDO_ARTICULO_HPP_
@@ -25,11 +27,11 @@ class OrdenaArticulos: public std::binary_function <Articulo* , Articulo* , bool
 class LineaPedido{
     public:
         //Metodo constructor
-        explicit LineaPedido(double precio, int cant = 1):cantidad_(cant),precio_venta_(precio){}
+        explicit LineaPedido(double precio, unsigned cant = 1):cantidad_(cant), precio_venta_(precio){}
         
         //Metodo observador
-        unsigned cantidad() const {return cantidad_;};
-        double precio_venta() const {return precio_venta_;};
+        const unsigned cantidad() const {return cantidad_;};
+        const double precio_venta() const {return precio_venta_;};
 
     private:
         //Parámetros
@@ -48,9 +50,9 @@ class Pedido_Articulo{
         typedef std::map <Pedido*, LineaPedido, OrdenaPedidos > Pedidos ;
 
         //Método pedir
-        void pedir(Pedido& ped,Articulo& art,double precio, int cant);
+        void pedir(Pedido& ped,Articulo& art,double precio, unsigned cant = 1);
         //Sobrecarga del método pedir
-        void pedir(Articulo& art,Pedido& ped,double precio, int cant);
+        void pedir (Articulo &art, Pedido &ped, double precio, unsigned cant = 1) {pedir (ped, art, precio, cant);}
 
         //Método detalle
         ItemsPedido& detalle(Pedido& ped);

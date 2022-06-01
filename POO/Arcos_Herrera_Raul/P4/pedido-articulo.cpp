@@ -1,4 +1,6 @@
-//pedido-articulo.cpp Raúl Arcos Herrera.
+/*************************************************
+* pedido-articulo.cpp By Raúl Arcos Herrera 2022 *
+**************************************************/
 
 #include <iomanip>
 #include <ostream>
@@ -15,14 +17,9 @@ std::ostream& operator <<(std::ostream& salida, const LineaPedido& lp){
 
 //No requiere metodo constructor.
 //Método pedido (Ambas direcciones)
-void Pedido_Articulo::pedir(Pedido& ped, Articulo& art,double precio, int cant){
+void Pedido_Articulo::pedir(Pedido& ped, Articulo& art,double precio, unsigned cant){
     A_P_[&art].insert(std::make_pair(&ped,LineaPedido(precio,cant))) ;
     P_A_[&ped].insert(std::make_pair(&art,LineaPedido(precio,cant))) ;
-}
-
-
-void Pedido_Articulo::pedir(Articulo& art,Pedido& ped,double precio, int cant){
-    pedir(ped,art,precio,cant) ;
 }
 
 //Método detalle y ventas
@@ -35,7 +32,7 @@ Pedido_Articulo::Pedidos Pedido_Articulo::ventas(Articulo& art){
 
 //Método MostarDetallePedidos y mostrarVentasArtículos
 std::ostream& Pedido_Articulo::mostrarDetallePedidos(std::ostream& salida){   
-    double total; //Suma del precio total del pedido
+    double total=0; //Suma del precio total del pedido
     
     for(auto i = P_A_.begin(); i != P_A_.end(); i++){
         salida << "Pedido núm." << (i->first)->numero() << "\t" << "\n" << "Cliente: "

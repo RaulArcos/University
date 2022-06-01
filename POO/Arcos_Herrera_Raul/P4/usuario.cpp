@@ -1,6 +1,6 @@
-/*
-usuario.cpp By Raúl Arcos Herrera 2022
-*/
+/*****************************************
+* usuario.cpp By Raúl Arcos Herrera 2022 *
+******************************************/
 
 #include "usuario.hpp"
 #include <iomanip>

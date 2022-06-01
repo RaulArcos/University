@@ -1,12 +1,12 @@
-//Pedido hpp Raúl Arcos Herrera
+/*****************************************
+* pedido.hpp By Raúl Arcos Herrera 2022  *
+******************************************/
 
 #ifndef PEDIDO_HPP_
 #define PEDIDO_HPP_
 
-#include <iostream>
-#include <utility>
-#include <iomanip>
 
+#include <utility>
 #include <iomanip>
 #include <iostream>
 #include <ostream>

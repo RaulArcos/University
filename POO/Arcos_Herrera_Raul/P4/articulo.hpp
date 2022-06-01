@@ -1,6 +1,6 @@
-/*
-articulo.hpp By Raúl Arcos Herrera 2022
-*/
+/******************************************
+* articulo.hpp By Raúl Arcos Herrera 2022 *
+*******************************************/
 
 #ifndef ARTICULO_HPP_
 #define ARTICULO_HPP_
@@ -104,8 +104,6 @@ public:
 
 private:
   const unsigned tam_;
-  
-  
 };
 
 class LibroDigital : public Articulo{

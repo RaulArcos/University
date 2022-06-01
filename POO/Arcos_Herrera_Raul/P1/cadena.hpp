@@ -1,6 +1,6 @@
-/*
-Cadena.hpp By Raúl Arcos Herrera 2022
-*/
+/****************************************
+* cadena.hpp By Raúl Arcos Herrera 2022 *
+*****************************************/
 
 #ifndef _CADENA_HPP_
 #define _CADENA_HPP_

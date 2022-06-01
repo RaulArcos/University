@@ -1,6 +1,6 @@
-/*
-Fecha.cpp By Raúl Arcos Herrera 2022
-*/
+/******************************************
+* fecha.cpp By Raúl Arcos Herrera 2022 *
+*******************************************/
 
 
 #include "fecha.hpp"

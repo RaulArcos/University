@@ -1,6 +1,6 @@
-/*
-tarjeta.cpp By Raúl Arcos Herrera 2022
-*/
+/******************************************
+* tarjeta.cpp By Raúl Arcos Herrera 2022  *
+*******************************************/
 
 #include "tarjeta.hpp"
 #include <algorithm>

@@ -1,4 +1,6 @@
-//usuario-pedido.hpp Raúl Arcos Herrera.
+/************************************************
+* usuario-pedido.hpp By Raúl Arcos Herrera 2022 *
+*************************************************/
 
 #ifndef USUARIO_PEDIDO_H_
 #define USUARIO_PEDIDO_H_

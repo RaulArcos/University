@@ -1,6 +1,6 @@
-/****************************************
-*articulo.cpp By Raúl Arcos Herrera 2022*
-*****************************************/
+/******************************************
+* articulo.cpp By Raúl Arcos Herrera 2022 *
+*******************************************/
 
 #include "articulo.hpp"
 #include <ostream>
@@ -8,7 +8,7 @@
 
 // Constructor
 Articulo::Articulo(const Autores& autores, const Cadena& ref , const Cadena& titulo , const Fecha& f , const double precio):
-autores_(autores),referencia_(ref),titulo_(titulo),fecha_(f),precio_(precio){} 
+referencia_(ref),titulo_(titulo),autores_(autores),fecha_(f),precio_(precio){} 
 
 //Sobrecarga del operador de flujo
 std::ostream& operator <<(std::ostream& salida , const Articulo& a) noexcept{
@@ -30,11 +30,11 @@ std::ostream& operator <<(std::ostream& salida , const Articulo& a) noexcept{
 
 //Método impresion_especifica
 void Libro::impresion_especifica(std::ostream& salida) const noexcept{
-    salida << n_pag() << " págs., " << stock() << " unidades.";
+    salida << n_pag_ << " págs., " << stock_ << " unidades.";
 } 
 void Cederron::impresion_especifica(std::ostream& salida) const noexcept{
-    salida << tam() << " MB, " << stock() << " unidades.";
+    salida << tam_ << " MB, " << stock_ << " unidades.";
 } 
 void LibroDigital::impresion_especifica(std::ostream& salida) const noexcept{
-    salida << "A la venta hasta el " << f_expir() << '.';
+    salida << "A la venta hasta el " << f_expir_ << '.';
 } 

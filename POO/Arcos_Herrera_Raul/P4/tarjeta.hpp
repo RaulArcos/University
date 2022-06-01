@@ -1,6 +1,6 @@
-/*
-tarjeta.hpp By Raúl Arcos Herrera 2022
-*/
+/*****************************************
+* tarjeta.hpp By Raúl Arcos Herrera 2022 *
+******************************************/
 
 #ifndef TARJETA_HPP_
 #define TARJETA_HPP_
@@ -79,7 +79,7 @@ class Tarjeta{
         
         //Método modificador de tarjeta activa
         bool activa(bool f);
-        void anular_titular(){user_ = nullptr;activa_=false;}
+        
 
         //Clase exepción para tarjeta duplicada.
         class Num_duplicado{
@@ -97,8 +97,11 @@ class Tarjeta{
                 Desactivada(){}           
         };
 
+        friend class Usuario;
+
     private:
-        
+        //Método anular titular en private.
+        void anular_titular(){user_ = nullptr;activa_=false;}
         //Atributos de la clase Tarjeta:
         const Numero num_;
         static std::set<Numero> numeros_;

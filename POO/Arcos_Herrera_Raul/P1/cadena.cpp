@@ -1,6 +1,6 @@
-/*
-Cadena.cpp By Raúl Arcos Herrera 2022
-*/
+/****************************************
+* cadena.cpp By Raúl Arcos Herrera 2022 *
+*****************************************/
 #include "cadena.hpp"
 
 //Creacion de la cadena con dos parametros, tamaño inicial y caracter de relleno.
@@ -142,21 +142,10 @@ Cadena::~Cadena(){
 
 //Operadores de insercción y extracción.
 std::istream& operator >>(std::istream& inputbuffer, Cadena& cad){
-    char c;
-    char* cadaux = new char[32];
-    size_t tamp;
-
-    for(tamp = 0;isspace(inputbuffer.get())!=0 && tamp<32;tamp ++){}
-    inputbuffer.unget();
-
-    for(tamp = 0;tamp < 32 && !isspace(inputbuffer.peek()) && inputbuffer.good(); tamp++){
-        c = inputbuffer.get();
-        cadaux[tamp] = c;
-    }
-    cadaux[tamp] = '\0';
-    cad = Cadena(cadaux);
-
-    delete[] cadaux;
+    char s[33]="";
+    inputbuffer.width(33);
+    inputbuffer >> s;
+    cad = s;
     return inputbuffer;
 }
 std::ostream& operator <<(std::ostream& outputbuffer, const Cadena& cad){
