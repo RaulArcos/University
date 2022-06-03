@@ -80,7 +80,8 @@ template<typename T> int numNodosAgen(const Agen<T>& A)
     return numNodosAgenRec(A, A.raiz());
 }
 
-template<typename T> typename Agen<T>::nodo buscarEltoAgenRec(const Agen<T>& A, const T& x, const typename Agen<T>::nodo& n)
+template<typename T> 
+typename Agen<T>::nodo buscarEltoAgenRec(const Agen<T>& A, const T& x, const typename Agen<T>::nodo& n)
 {
     if( n == Agen<T>::NODO_NULO )
         return Agen<T>::NODO_NULO;
@@ -95,12 +96,14 @@ template<typename T> typename Agen<T>::nodo buscarEltoAgenRec(const Agen<T>& A, 
         }
 }
 
-template<typename T> typename Agen<T>::nodo buscarEltoAgen(const Agen<T>& A, const T& x)
+template<typename T> 
+typename Agen<T>::nodo buscarEltoAgen(const Agen<T>& A, const T& x)
 {
     return buscarEltoAgenRec(A, x, A.raiz());
 }
 
-template<typename T> int alturaNodoAgen(const Agen<T>& A, const typename Agen<T>::nodo& n)
+template<typename T> 
+int alturaNodoAgen(const Agen<T>& A, const typename Agen<T>::nodo& n)
 {
     int max = 0;
     typename Agen<T>::nodo aux = Agen<T>::NODO_NULO;
