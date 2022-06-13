@@ -1,0 +1,29 @@
+monitor impresoras ;
+	var
+		i , impresoras : integer ;
+		libre : array [1..3] of boolean ;
+		imp : condition ;
+
+	procedure integer take_print () ;
+	begin
+		if impresoras = 0 then wait(imp)
+		aux: integer;
+		aux:= 1;
+		while not (libre[aux]) do aux:= aux+1;
+		libre[aux]:= false;
+		impresoras:=impresoras-1;
+		return aux;
+	end ;
+
+	procedure drop_print ( var n : integer ) ;
+	begin
+		libre[n] := true;
+		impresora := impresora+1;
+		send (imp);
+	end ;
+
+	begin
+		for i :=1 to 3 do
+			libre [ i ]:= true ;
+			impresoras :=3; 
+	end .
