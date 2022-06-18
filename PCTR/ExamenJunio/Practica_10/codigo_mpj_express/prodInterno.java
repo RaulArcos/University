@@ -1,4 +1,4 @@
-//COMPILACION: javac -cp .;%MPJ_HOME %/lib/mpj.jar prodInterno.java
+//COMPILACION: javac -cp C:/mpj/lib/mpj.jar prodInterno.java
 //EJECUCION: mpjrun.bat -np 2 prodInterno
 
 import mpi.*;

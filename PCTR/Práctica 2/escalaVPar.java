@@ -28,7 +28,7 @@ public class escalaVPar {
     //RUNNABLE
     
     public static void main(String[] args) throws Exception
-    {   
+    {  
         //Se divide el vector en 2 tareas.
         tarea t1 = new tarea(0,v.length/2,v,3);
         tarea t2 = new tarea(v.length/2,v.length,v,3);
