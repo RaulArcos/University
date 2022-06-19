@@ -58,3 +58,43 @@ typename GrafoP<tCoste>::vertice pseudocentro(const GrafoP<tCoste>& G){
 
     return verticeMin;
 }
+
+
+template <typename tCoste>
+typename GrafoP<tCoste>::vertice pseudocentro(const GrafoP<tCoste>& G){
+
+    typedef typename GrafoP<tCoste>::vertice vertice;
+    vertice pseudocentroRetorno;
+    vector<tCoste> vectorCosteMin;
+    tCoste costeMin;
+    tCoste suma;
+    vector<typename GrafoP<tCoste>::vertice> P(G.numVert());
+
+    for(size_t i = 0; i < G.numVert(); ++i){
+        vectorCosteMin = Dijkstra(G,i,P);
+        suma = suma2MasAlejados2(vectorCosteMin);
+        if(suma < costeMin)
+            costeMin = suma;
+            pseudocentroRetorno = i;
+    }
+    return pseudocentroRetorno;
+}
+
+
+template <typename tCoste>
+tCoste suma2MasAlejados2(const vector<tCoste> costes){
+    
+     tCoste sumaCostes = 0;
+
+    typename std::vector<tCoste>::iterator iMax = max_element(C.begin(), C.end());
+    if( iMax != C.end() )
+        sumaCostes += iMax;
+
+    C.erase(iMax);
+
+    iMax = max_element(C.begin(), C.end());
+    if( iMax != C.end() )
+        sumaCostes += iMax;
+    
+    return sumaCostes;
+}

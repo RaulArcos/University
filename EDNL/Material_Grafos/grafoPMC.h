@@ -4,15 +4,15 @@
 /* clase GrafoP<T>: Matriz de costes de un grafo.         */
 /*                                                        */
 /* Estructuras de Datos no Lineales                       */
-/* ©2016 José Fidel Argudo                                */
+/* ï¿½2016 Josï¿½ Fidel Argudo                                */
 /*--------------------------------------------------------*/
 /*
-Tipos públicos:
+Tipos pï¿½blicos:
 
    GrafoP<T>::tCoste      // tipo de los pesos de las aristas
    GrafoP<T>::vertice // valores entre 0 y Grafo::numVert()-1
    GrafoP<T>::arista          // arista de un grafo ponderado
-      Miembros públicos:
+      Miembros pï¿½blicos:
          vertice orig, dest;   // extremos de la arista
          tCoste coste;         // coste de la arista
          // Constructor
@@ -21,21 +21,21 @@ Tipos públicos:
                          tCoste c = tCoste());
          // Orden de aristas para Prim y Kruskall
          bool operator <(const arista& a) const;
-   GrafoP<T>::tCamino // secuencia de vértices que forman un camino
+   GrafoP<T>::tCamino // secuencia de vï¿½rtices que forman un camino
 
-Atributo público:
+Atributo pï¿½blico:
 
    static const tCoste GrafoP<T>::INFINITO = std::numeric_limits<T>::max();
-      Máximo del rango de valores de tCoste. Peso de una arista inexistente.
+      Mï¿½ximo del rango de valores de tCoste. Peso de una arista inexistente.
 
-Métodos públicos:
+Mï¿½todos pï¿½blicos:
 
    explicit GrafoP(size_t n);
-      Grafo ponderado de n vértices sin aristas.
+      Grafo ponderado de n vï¿½rtices sin aristas.
 
    explicit GrafoP(const std::string& nf);
-      Grafo ponderado extraído desde un fichero de texto de
-      nombre nf, que contiene el número de vértices seguido de
+      Grafo ponderado extraï¿½do desde un fichero de texto de
+      nombre nf, que contiene el nï¿½mero de vï¿½rtices seguido de
       los pesos de las aristas en forma de matriz de costes.
       Ejemplo: tCoste = unsignded int, INFINITO = 4294967295
       5
@@ -46,17 +46,17 @@ Métodos públicos:
       4294967295 4294967295          5 4294967295 4294967295
 
    GrafoP(const Grafo& G);
-      Constructor de conversión. Construye un GrafoP<T> a partir
+      Constructor de conversiï¿½n. Construye un GrafoP<T> a partir
       de uno no ponderado representado mediante matriz de adyacencia,
-      es decir, cambiando la representación a matriz de costes con
+      es decir, cambiando la representaciï¿½n a matriz de costes con
       aristas de coste 1.
 
    size_t numVert() const;
-      Número de vértices
+      Nï¿½mero de vï¿½rtices
 
    const vector<tCoste>& operator [](vertice v) const;
    vector<tCoste>& operator [](vertice v);
-      Pesos de las aristas adyacentes al vértice v.
+      Pesos de las aristas adyacentes al vï¿½rtice v.
       Fila v de la matriz de costes.
 
    bool esDirigido() const;
@@ -66,7 +66,7 @@ Sobrecarga de operador externo:
 
    template <typename T>
    std::ostream& operator <<(std::ostream& os, const GrafoP<T>& G);
-      Inserción de un grafo ponderado en un flujo de salida.
+      Inserciï¿½n de un grafo ponderado en un flujo de salida.
 
 ----------------------------------------------------------*/
 
@@ -109,7 +109,7 @@ private:
    vector< vector<tCoste> > costes;
 };
 
-// Definición de INFINITO
+// Definiciï¿½n de INFINITO
 template <typename T>
 const T GrafoP<T>::INFINITO = std::numeric_limits<T>::max();
 
@@ -118,7 +118,7 @@ template <typename T>
 GrafoP<T>::GrafoP(const std::string& nf)
 {
    std::ifstream fg(nf);           // apertura del fichero
-   unsigned n;                     // núm. vértices
+   unsigned n;                     // nï¿½m. vï¿½rtices
    fg >> n;
    costes = vector<vector<T> >(n, vector<T>(n));
    for (vertice i = 0; i < n; i++)
@@ -128,7 +128,7 @@ GrafoP<T>::GrafoP(const std::string& nf)
 }
 
 // Construye un GrafoP<T> a partir de uno no ponderado representado
-// mediante matriz de adyacencia, es decir, cambiando la representación
+// mediante matriz de adyacencia, es decir, cambiando la representaciï¿½n
 // a matriz de costes con aristas de coste 1.
 template <typename T>
 GrafoP<T>::GrafoP(const Grafo& G):
@@ -144,7 +144,7 @@ GrafoP<T>::GrafoP(const Grafo& G):
 template <typename T>
 bool GrafoP<T>::esDirigido() const
 {
-   bool s = true;   // matriz simétrica ==> no dirigido
+   bool s = true;   // matriz simï¿½trica ==> no dirigido
    const size_t n = numVert();
    vertice i = 0;
    while (s && i < n) {
@@ -155,10 +155,10 @@ bool GrafoP<T>::esDirigido() const
       }
       ++i;
    }
-   return !s;   // no simétrica ==> dirigido
+   return !s;   // no simï¿½trica ==> dirigido
 }
 
-// Inserción de un grafo ponderado en un flujo de salida.
+// Inserciï¿½n de un grafo ponderado en un flujo de salida.
 template <typename T>
 std::ostream& operator <<(std::ostream& os, const GrafoP<T>& G)
 {
@@ -182,5 +182,6 @@ std::ostream& operator <<(std::ostream& os, const GrafoP<T>& G)
    }
    return os;
 }
+
 
 #endif   // GRAFO_PON_H
