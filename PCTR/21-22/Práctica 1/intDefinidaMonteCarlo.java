@@ -35,7 +35,7 @@ public class intDefinidaMonteCarlo {
         }
 
         System.out.println("Integral aproximada x = " + contador_exitos_x/n);
-        System.out.println("Integral aproximada sin= " + contador_exitos_sin/n);
+        System.out.println("Integral aproximada sin = " + contador_exitos_sin/n);
         
     }
 }
