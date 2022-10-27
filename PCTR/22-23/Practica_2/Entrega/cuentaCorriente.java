@@ -1,27 +1,44 @@
+/**
+ * cuentaCorriente.java
+ * @author Raúl Arcos Herrera
+ * @version 2022
+ */
 public class cuentaCorriente {
-
-    //Constructor
-    public cuentaCorriente(int cuenta, double saldo) 
-    { 
+    /**
+     * Constructor de la clase.
+     * @param cuenta
+     * @param saldo
+     */
+    public cuentaCorriente(int cuenta, double saldo) { 
 		cuenta_ = cuenta; 
 		saldo_ = saldo; 
     }
-
-    //Observadores
+    /**
+     * Método observador
+     * @return El número de cuenta.
+     */
     public int cuenta() { return cuenta_; }
+    /**
+     * Método Observador
+     * @return El saldo de la cuenta.
+     */
     public double saldo() { return saldo_; }
 
-    //Métodos de la clase
-    public double ingresar() 
-    {
+    /**
+     * Ingresa 1 al saldo.
+     * @return saldo + 1.
+     */
+    public double ingresar() {
         return saldo_++; 
     }
-    public double retirar()
-    { 
+    /**
+     * Decrementa 1 al saldo.
+     * @return saldo - 1.
+     */
+    public double retirar(){ 
         return saldo_--; 
     }
-
-    //Attibutos
+    
     private int cuenta_;
     private static double saldo_;
 }

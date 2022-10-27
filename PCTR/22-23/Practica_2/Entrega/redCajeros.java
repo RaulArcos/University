@@ -1,6 +1,10 @@
+/**
+ * redCajeros.java
+ * @author Raúl Arcos Herrera
+ * @version 2022
+ */
 public class redCajeros {
-    public static void main(String[] args) throws Exception
-    {
+    public static void main(String[] args) throws Exception{
         cuentaCorriente cc  = new cuentaCorriente(1, 0.0);
         Runnable c1 = new cajero(cc, 100000.0, 1);
         Runnable c2 = new cajero(cc, 100000.0, 2);

@@ -1,9 +1,11 @@
-public class concursoLambda
-{   
+/**
+ * concursoLambda.java 
+ * @author Raúl Arcos Herrera
+ * @version 2022
+ */
+public class concursoLambda{
     public static int c = 0;
-    public static void main(String[] args) throws Exception 
-	{
-        //Creamos las tareas run con la función lambda
+    public static void main(String[] args) throws Exception {
 		Runnable t1 = () -> { for(int i = 0; i < 10000; ++i) ++c; };
 		Runnable t2 = () -> { for(int i = 0; i < 10000; ++i) --c; };
 		

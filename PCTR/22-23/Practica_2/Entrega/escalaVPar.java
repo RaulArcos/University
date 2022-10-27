@@ -1,13 +1,13 @@
+/**
+ * escalaVPar.java realiza el producto escalar de un vector de forma paralela.
+ * @author Raúl Arcos Herrera
+ * @version 2022
+ */
 public class escalaVPar {
-    
     public static int[] v = new int[1000*(int)Math.pow(10, 6)];
-    
-    public static int[] inicializar(int[] v)
-    {
+    public static int[] inicializar(int[] v){
         for(int i = 0; i < v.length; i++)
-        {
             v[i] = (int)(Math.random() * 10);
-        }
         return v;
     }
 
@@ -27,8 +27,12 @@ public class escalaVPar {
     */
     //RUNNABLE
     
-    public static void main(String[] args) throws Exception
-    {  
+    /**
+     * Void main
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception{  
         //Se divide el vector en 2 tareas.
         tarea t1 = new tarea(0,v.length/2,v,3);
         tarea t2 = new tarea(v.length/2,v.length,v,3);
@@ -43,45 +47,42 @@ public class escalaVPar {
     }
     
 }
+class hilo extends Thread{
 
-class hilo extends Thread
-{
     public final int ini;
     public final int fin;
     public int[] vector;
     public final int escalar;
 
-    public hilo(int i, int f, int[] v, int e)
-    {
+    public hilo(int i, int f, int[] v, int e){
         ini = i;
         fin = f;
         vector = v;
         escalar = e;
     }
 
-    public void run() 
-    {
-        for(int i = ini; i < fin; ++i)  vector[i] *= escalar;
+    public void run() {
+        for(int i = ini; i < fin; ++i)  
+            vector[i] *= escalar;
     }
 }   
 
-class tarea implements Runnable
-{
+class tarea implements Runnable{
+    
     public final int ini;
     public final int fin;
     public int[] vector;
     public final int escalar;
 
-    public tarea(int i, int f, int[] v, int e)
-    {
+    public tarea(int i, int f, int[] v, int e){
         ini = i;
         fin = f;
         vector = v;
         escalar = e;
     }
 
-    public void run() 
-    {
-        for(int i = ini; i < fin; ++i)  vector[i] *= escalar;
+    public void run() {
+        for(int i = ini; i < fin; ++i)  
+            vector[i] *= escalar;
     }
 } 
