@@ -10,8 +10,12 @@ public class tryThree extends Thread{
     private static volatile boolean C1 = false;
     private static volatile boolean C2 = false;
 
-    public tryThree(int tipoHilo)
-    {this.tipoHilo=tipoHilo;}
+    /**
+     * tryThree, constructor.
+     * @param tipoHilo
+     */
+    public tryThree(int tipoHilo){
+        this.tipoHilo=tipoHilo;}
     
     public void run(){
         switch(tipoHilo){
@@ -19,8 +23,7 @@ public class tryThree extends Thread{
                     C1 = true;
                     while(C2 == true);
                     n++;
-                    C1 = false;
-                    
+                    C1 = false; 
                 }
                 break;}
         case 2: {for(int i=0; i<nVueltas;i++){
@@ -32,7 +35,6 @@ public class tryThree extends Thread{
                 }break;
         }
     }
-
     public static void main(String[] args) throws InterruptedException{
         tryThree h1 = new tryThree(1);
         tryThree h2 = new tryThree(2);

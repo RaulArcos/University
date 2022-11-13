@@ -1,3 +1,8 @@
+/**
+ * tryFour.java.
+ * @author Raúl Arcos Herrera
+ * @version 2022
+ */
 public class tryFour extends Thread {
     private int tipoHilo;
 	private static volatile int nVueltas = 10000;
@@ -5,27 +10,28 @@ public class tryFour extends Thread {
 	private static volatile boolean C1 = false;
 	private static volatile boolean C2 = false;
 
-    public tryFour(int tipoHilo)
-    {this.tipoHilo=tipoHilo;}
+    /**
+     * tryFour, contructor.
+     * @param tipoHilo
+     */
+    public tryFour(int tipoHilo){
+      this.tipoHilo=tipoHilo;}
 
     public void run(){
       switch(tipoHilo){
         case 1:{for(int i=0; i<nVueltas; i++){
         	      C1 = true;
-                  while(C2 == true)
-                  {
+                  while(C2 == true){
                     C1 = false;
                     C1 = true;
                   }
         	      n++;
         	      C1 = false;
-        	      
         	    }
         	    break;}
         case 2: {for(int i=0; i<nVueltas;i++){
         	      C2 = true;
-                  while(C1 == true)
-                  {
+                  while(C1 == true){
                       C2 = false;
                       C2 = true;
                   }
@@ -35,7 +41,6 @@ public class tryFour extends Thread {
         	    }break;
       }
     }
-
     public static void main(String[] args) throws InterruptedException{
       tryFour h1 = new tryFour(1);
       tryFour h2 = new tryFour(2);
