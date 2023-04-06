@@ -1,5 +1,5 @@
 /******************************************
-* fecha.cpp By Raúl Arcos Herrera 2022 *
+* fecha.cpp By Raúl Arcos Herrera 2023 *
 *******************************************/
 
 
@@ -168,7 +168,7 @@ std::ostream& operator <<(std::ostream& outputbuffer, const Fecha& f){
     return outputbuffer;
 }
 std::istream& operator >>(std::istream& inputbuffer, Fecha& f){
-    size_t tam_cad = 12; // 2 de dia + 2 de mes + 4 de año + barras
+    unsigned int tam_cad = 12; // 2 de dia + 2 de mes + 4 de año + barras
     char* cad = new char[tam_cad];
 
     inputbuffer.getline(cad,tam_cad); //Introducimos una cadena de tam_cad caracteres, tambiém podríamos utilizar get(cad,tam_cad,char "\0") 

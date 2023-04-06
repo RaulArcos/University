@@ -1,5 +1,5 @@
 /****************************************
-* cadena.hpp By Raúl Arcos Herrera 2022 *
+* cadena.hpp By Raúl Arcos Herrera 2023 *
 *****************************************/
 
 #ifndef _CADENA_HPP_
@@ -7,19 +7,18 @@
 
 #include <iostream>
 #include <cstring>
-#include <stdlib.h>
+#include <cstdlib>
 #include <iterator>
 
 class Cadena{
     public:
     // Constructores
-    explicit Cadena(size_t tam = 0, char c = ' '); //Constructor a partir de tamaño y letra de relleno.
+    explicit Cadena(unsigned int tam = 0, char c = ' '); //Constructor a partir de tamaño y letra de relleno.
     Cadena(const Cadena& cad); //Constructor a partir de otra Cadena.
     Cadena(const char* cad); //Constructor a partir de una cadena de bajo nivel.
-    //Cadena(const Cadena& cad,size_t indice,size_t tamano); //Constructor de substr
 
     //Constructor semántica en movimiento
-    Cadena(Cadena&& cad);
+    Cadena(Cadena&& cad) noexcept;
 
     //Destructor
     ~Cadena();
@@ -28,23 +27,23 @@ class Cadena{
     Cadena& operator =(const Cadena& cad);
     
     //Operador de Asignación con semántica de movimiento
-    Cadena& operator =(Cadena&& cad);
+    Cadena& operator =(Cadena&& cad) noexcept;
 
     // Operadores Aritmeticos
     Cadena& operator +=(const Cadena& cad) noexcept;
     
     //Sobrecarga del operador indice
-    char& operator [](const size_t indice) noexcept;
-    const char& operator [](const size_t indice) const noexcept;
+    char& operator [](const unsigned int indice) noexcept;
+    const char& operator [](const unsigned int indice) const noexcept;
 
     //Observadores
-    size_t length() const noexcept;
+    unsigned int length() const noexcept;
     Cadena substr(unsigned indice, unsigned tam) const;
-    char &at(size_t indice);
-    const char &at(size_t indice) const;
+    char &at(unsigned int indice);
+    const char &at(unsigned int indice) const;
 
     //Conversiones
-    const char* c_str() const noexcept;
+    explicit operator const char*() const {return s_;}
 
     //Definimos los iteradores
     typedef char* iterator;
@@ -69,17 +68,39 @@ class Cadena{
     
     private:
 
-    size_t tam_;
+    unsigned int tam_;
     char *s_;
 };
 
 //OPERADORES LÓGICOS
-bool operator ==(const Cadena& c1,const Cadena& c2) noexcept;
-bool operator >(const Cadena& c1,const Cadena& c2)  noexcept;
-bool operator <(const Cadena& c1,const Cadena& c2)  noexcept;
-bool operator >=(const Cadena& c1,const Cadena& c2) noexcept;
-bool operator <=(const Cadena& c1,const Cadena& c2) noexcept;
-bool operator !=(const Cadena& c1,const Cadena& c2) noexcept;
+
+//operador ==
+inline bool operator ==(const Cadena& cad1, const Cadena& cad2) noexcept{
+    return (!strcmp(cad1.operator const char*(), cad2.operator const char*()));
+}
+
+// Operador >
+inline bool operator>(const Cadena& cad1, const Cadena& cad2) noexcept {
+    return strcmp(cad1.operator const char*(), cad2.operator const char*()) > 0;
+}
+// Operador <
+inline bool operator<(const Cadena& cad1, const Cadena& cad2) noexcept {
+    return strcmp(cad1.operator const char*(), cad2.operator const char*()) < 0;
+}
+// Operador >=
+inline bool operator>=(const Cadena& cad1, const Cadena& cad2) noexcept {
+    return strcmp(cad1.operator const char*(), cad2.operator const char*()) >= 0;
+}
+
+// Operador <=
+inline bool operator<=(const Cadena& cad1, const Cadena& cad2) noexcept {
+    return strcmp(cad1.operator const char*(), cad2.operator const char*()) <= 0;
+}
+
+// Operador !=
+inline bool operator!=(const Cadena& cad1, const Cadena& cad2) noexcept {
+    return strcmp(cad1.operator const char*(), cad2.operator const char*()) != 0;
+}
 
 //OPERADORES ARITMETICOS
 Cadena operator +(const Cadena& cad1,const Cadena& cad2) noexcept;
@@ -88,19 +109,18 @@ Cadena operator +(const Cadena& cad1,const Cadena& cad2) noexcept;
 std::ostream& operator <<(std::ostream& outputbuffer, const Cadena& cad);
 std::istream& operator >>(std::istream& inputbuffer, Cadena& f);
 
-
-
 namespace std{	
 	template<>	
 	struct hash<Cadena>{	
-		size_t operator() (const Cadena& cad) const	
+		unsigned int operator() (const Cadena& cad) const	
 		{
 			hash<string> hs;				
-			const char* p = cad.c_str();	
+			const char* p = cad.operator const char*();	
 			string s(p);					
-			size_t res = hs(s);				
+			unsigned int res = hs(s);				
 			return res;						
 		}
 	};
 }
+
 #endif

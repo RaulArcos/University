@@ -119,7 +119,12 @@ int main()
   s += "\n";
   // P0: Conversión Cadena -> const char*
   // P1: Inserción en flujo de salida
-  cout << "\n" << s;
+  cout << "\n";
+#ifdef P0
+  cout << (const char*)(s);
+#else
+  cout << s;
+#endif
   Cadena t("Por haber hecho el esfuerzo de teclear este programa. Repito:\n");
   Cadena u;			// constructor predeterminado
   u = t + s;			// pruebas de asignación, concatenación
@@ -127,16 +132,29 @@ int main()
 # pragma GCC diagnostic ignored "-Wself-assign-overloaded"
 #endif
   u = u;
+#ifdef P0
+  cout << (const char*)(u);
+#else
   cout << u;
+#endif
   Cadena v;
   v = "Hola";			
+#ifdef P0
+  cout << (const char*)(v) << endl;
+#else
   cout << v << endl;
+#endif
   
   // Pruebas de índices
   size_t i = 87;
   cout << "El elemento " << i << " de la cadena es: " << u[i] << endl;
   u[94u] = u[54u] = 'p';
-  cout << "Y tras modificar algunos caracteres, la cadena queda:\n" << u;
+  cout << "Y tras modificar algunos caracteres, la cadena queda:\n";
+#ifdef P0
+  cout << (const char*)(u);
+#else
+  cout << u;
+#endif
   try {
     cout << u.at(2000);		// Fuera de rango
   } catch(out_of_range& e) {
@@ -146,17 +164,20 @@ int main()
   // Prueba de subcadena
   Cadena grande("Nihil novum sub solem"); // Nada nuevo bajo el Sol
   Cadena nuevo = grande.substr(6, 5);  // nuevo <- "novum"
-  cout << "substr(6, 5) de " << grande << ": \"" << nuevo << "\"" << endl;
+  cout << "substr(6, 5) de ";
 #ifdef P0
+  cout << (const char*)(grande) << ": \"" << (const char*)(nuevo) << "\"" << endl;
   if (Cadena("novum") != nuevo)
 #else
+  cout << grande << ": \"" << nuevo << "\"" << endl;
   if ("novum" != nuevo)
 #endif
     cerr << "*** ERROR *** Debería haber impreso \"novum\"" << endl;
   
   // Prueba de comparaciones
-  cout << "Cadena a = \"novum\", b = \"Nihil novum sub solem\";\n a < b: " 
-       << boolalpha << (nuevo < grande) << "\n a > b: " << (nuevo > grande)
+  cout << boolalpha << " a == \"novum\": " << ("novum" == nuevo)
+       << "\n b == \"Nihil novum sub solem\": " << (grande == "Nihil novum sub solem")
+       << "\n a < b: " << (nuevo < grande) << "\n a > b: " << (nuevo > grande)
        << "\n a <= b: " << (nuevo <= grande) << "\n a >= b: " 
        << (nuevo >= grande) << "\n a == b: " << (nuevo == grande)
        << "\n a != b: " << (nuevo != grande) << endl;

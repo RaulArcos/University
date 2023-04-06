@@ -1,11 +1,11 @@
 /****************************************
-* cadena.cpp By Raúl Arcos Herrera 2022 *
+* cadena.cpp By Raúl Arcos Herrera 2023 *
 *****************************************/
 #include "cadena.hpp"
 
 //Creacion de la cadena con dos parametros, tamaño inicial y caracter de relleno.
-Cadena::Cadena(size_t tam, char s):tam_(tam),s_ (new char[tam+1]){                                                  
-    for(size_t i = 0; i<tam ;i++)
+Cadena::Cadena(unsigned int tam, char s):tam_(tam),s_ (new char[tam+1]){                                                  
+    for(unsigned int i = 0; i<tam ;i++)
         s_[i] = s;
     s_[tam_] = '\0';
 }
@@ -21,12 +21,10 @@ Cadena::Cadena(const char* cad){
 }
 
 //Constructor de copia con semántica de movimiento.
-Cadena::Cadena(Cadena&& cad){
-    tam_ = cad.tam_;
-    s_ = cad.s_;
-    
-    cad.s_ =nullptr;
+Cadena::Cadena(Cadena&& cad) noexcept: tam_(cad.tam_), s_(cad.s_){
     cad.tam_ = 0;
+    cad.s_ = new char[1];
+    cad.s_[0] = '\0';
 }
 
 //Operador de asignación.
@@ -39,19 +37,20 @@ Cadena &Cadena::operator =(const Cadena& cad){
 }
 
 //Operador de Asignación con semántica de movimiento.
-Cadena &Cadena::operator =(Cadena&& cad){
-    delete[] s_;
-    this->tam_ = cad.tam_;
-    this->s_ = cad.s_;
-
-    cad.tam_= 0;
-    cad.s_= nullptr;
-
+Cadena &Cadena::operator =(Cadena&& cad) noexcept{
+   if (this != &cad) {
+      delete[] s_;
+      tam_ = cad.tam_;
+      s_ = cad.s_;
+      cad.tam_ = 0;
+      cad.s_ = new char[1];
+      cad.s_[0] = '\0';
+    }
     return *this;
 }
 
 //Función observadora para la longitud de una cadena.
-size_t Cadena::length() const noexcept{
+unsigned int Cadena::length() const noexcept{
     return this->tam_;
 }
 
@@ -60,7 +59,7 @@ Cadena Cadena::substr(unsigned indice, unsigned tam) const{
         throw std::out_of_range("substr -> Fuera de rango");
 
     char* cadaux = new char[tam+1]; //tam = 12 cadaux =13
-    for(size_t i = 0; i < tam ; i++){
+    for(unsigned int i = 0; i < tam ; i++){
        cadaux[i] = this->s_[indice];     
        indice++;                         
     }                                       
@@ -71,30 +70,24 @@ Cadena Cadena::substr(unsigned indice, unsigned tam) const{
     return cadenareturn;
 }
 
-char& Cadena::at(size_t indice){
+char& Cadena::at(unsigned int indice){
     if(indice < tam_) 
         return s_[indice];
     throw std::out_of_range("at -> Error, indice > tamaño o indice < 0");
 }
-const char& Cadena::at(size_t indice) const{
+const char& Cadena::at(unsigned int indice) const{
     if(indice < tam_) 
         return s_[indice];
     throw std::out_of_range("at -> Error, indice > tamaño o indice < 0");
-}
-
-
-//Operador de conversion a cadena de bajo nivel
-const char* Cadena::c_str() const noexcept{
-    return s_;
 }
 
 // Operador de índice
 // Consultora
-const char& Cadena::operator[](const size_t indice) const noexcept {
+const char& Cadena::operator[](const unsigned int indice) const noexcept {
     return this->s_[indice] ;
 }
 // Modificadora
-char& Cadena::operator[] (const size_t indice) noexcept {
+char& Cadena::operator[] (const unsigned int indice) noexcept {
     return this->s_[indice] ;
 }
 
@@ -112,27 +105,6 @@ Cadena &Cadena::operator +=(const Cadena &cad) noexcept{
 Cadena operator +(const Cadena& cad1,const Cadena& cad2) noexcept{
     return Cadena(cad1) += cad2;
 }
-//Operadores lógicos
-bool operator ==(const Cadena& cad1, const Cadena& cad2) noexcept{
-    return (!strcmp(cad1.c_str(),cad2.c_str()));
-}
-
-bool operator !=(const Cadena& cad1, const Cadena& cad2) noexcept{
-    return (strcmp(cad1.c_str(),cad2.c_str()));
-}
-
-bool operator >(const Cadena& cad1, const Cadena& cad2) noexcept{   
-    return (cad1[0] > cad2[0]);
-}
-bool operator <(const Cadena& cad1, const Cadena& cad2) noexcept{   
-    return ( strcmp(cad1.c_str() , cad2.c_str()) < 0 );
-}
-bool operator >=(const Cadena& cad1, const Cadena& cad2) noexcept{   
-    return (cad1[0] >= cad2[0]);
-}
-bool operator <=(const Cadena& cad1, const Cadena& cad2) noexcept{   
-    return (cad1[0] <= cad2[0]);
-}
 
 //Destructor.
 Cadena::~Cadena(){
@@ -149,7 +121,7 @@ std::istream& operator >>(std::istream& inputbuffer, Cadena& cad){
     return inputbuffer;
 }
 std::ostream& operator <<(std::ostream& outputbuffer, const Cadena& cad){
-    outputbuffer << cad.c_str();
+    outputbuffer << cad.operator const char*();
     return outputbuffer;  
 }
 

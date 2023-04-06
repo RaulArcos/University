@@ -24,7 +24,7 @@ int main(int argc, const char **argv) {
 
   /***************** Fecha *************************************/
   checkCode cf(argc, argv, "fecha.cpp",
-      "Modo de empleo: ./fecha_check fecha.cpp cadena.cpp -- -std=c++11");
+	       "Modo de empleo: "s + *argv + " fecha.cpp cadena.cpp -- -std=c++17");
   cf.setCorrectMessage("Verificación correcta de la clase Fecha.");
   cf.setIncorrectMessage("REVISA LA CLASE Fecha.");
   
@@ -45,7 +45,7 @@ int main(int argc, const char **argv) {
     vector<string> consts = {"?", "?", "?", "?", "?"};
     vector<vector<string>> params = {{"?"}, {"?"}, {"?"}, {"?"}, {"?"}};
     cf.methodWithReferencedMethod({"operator-=", "operator+",
-				  "operator-", "operator++", "operator--"},
+				  "operator-", "operator\\+\\+", "operator--"},
       params, "Fecha", consts,
       {"operator+=", "operator+=", "operator+=", "operator+=", "operator+="},
       params, "Fecha", consts,
@@ -108,6 +108,10 @@ int main(int argc, const char **argv) {
     cc.destructorDeleteMember("Cadena", {"s_"},
 			      "Revisa el destructor de la clase.");
     cc.releaseVariable("Revisa la asignación y liberación de memoria.");
+   
+    cc.method({"operator="}, {{"const char *"}}, "Cadena", {"noconst"}, "No se detecta" 
+		    " el operador de asignación con conversión desde cadena"
+		    " de bajo nivel.");
     vector<string> methodNames = {"length"};
     vector<vector<string> > parametersMethods = {{"?"}};
     cc.inlineMethod(methodNames, parametersMethods, "Cadena", {"?"},
