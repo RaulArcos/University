@@ -1,0 +1,25 @@
+n = 5 000 000
+hilos		tiempo 		speedup
+1		5 seg		5/5 = 1
+2		4 seg		5/4 = 1,25
+4		2 seg		5/2 = 2,5
+8		1 seg		5/1 = 5
+10		1 seg		5/1 = 5
+---
+VolcadoRed
+Cb = 0 && hilos = 2 -> t = 8.11 seg
+Cb = 0 && hilos = 4 -> t = 5.98 seg
+Cb = 0 && hilos = 8 -> t = 3.87 seg
+Cb = 0 && hilos = 10 -> t = 4.61 seg
+
+
+Cb = 0 -> t = 6.84 seg
+Cb = 0.1 -> t = 3.98 seg
+Cb = 0.2 -> t = 4.19 seg
+Cb = 0.3 -> t = 3.99 seg
+Cb = 0.4 -> t = 4.26 seg
+Cb = 0.5 -> t = 3.86 seg
+Cb = 0.6 -> t = 2.85 seg
+Cb = 0.7 -> t = 4.31 seg
+Cb = 0.8 -> t = 3.31 seg
+Cb = 0.9 -> t = 6.47 seg

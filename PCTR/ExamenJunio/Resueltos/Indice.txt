@@ -1,0 +1,39 @@
+- MONTECARLO:
+	* Callable -> Febrero_2021_22_especial
+	* Runnable -> Junio_2021_22
+	* Callable -> Septiembre_2019_20
+	* Thread -> Septiembre_2021_22
+
+- DIVISIÓN DE DOMINIO DE DATOS:
+	* Runnable (condición de frontera: cilíndrica) -> Febrero_2020_21
+	* Thread (condición de frontera: nula)-> Febrero_2021_22
+	* Runnable (condición de frontera: nula) -> Junio_2019_20
+	* Runnable (condición de frontera:nula)-> Junio_2020_21
+
+- MPJ:
+	* Integral -> Diciembre_2022_23
+	* Suma de matrices -> Febrero_2020_21
+	* Calculo de matrices -> Febrero_2021_22
+	* Producto de matrices -> Febrero_2021_22_especial
+	* Producto de matrices (broadcast y scatter) -> Febrero_2022_23
+	* Máximo -> Junio_2020_21
+	* Lotería -> Junio_2021_22
+	* Producto vectorial -> Septiembre_2019_20
+	* TokenRing -> Septiembre_2021_22
+
+- RMI:
+	* Cine -> Febrero_2011_12
+	* Cuaternion -> Febrero_2021_22
+	* Vector -> Febrero_2021_22_especial
+	* Cliente - Sevidor -> Junio_2020_21
+
+- MONITORES:
+	* Barrera -> Febrero_2022_23
+
+- BARRERA:
+	* Juego de la vida -> Febrero_2011_12
+
+- CPP:
+	* TAD Lista Secuencial -> Febrero_2020_21
+	* Semáforo teórico (monitor) -> Febrero_2022_23
+	* Monitor Playa -> Junio_2019_20

@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch algDekker",
+            "request": "launch",
+            "mainClass": "algDekker",
+            "projectName": "Archivos_62034021"
+        },
+        {
+            "type": "java",
+            "name": "Launch algPeterson",
+            "request": "launch",
+            "mainClass": "algPeterson",
+            "projectName": "Archivos_62034021"
+        },
+        {
+            "type": "java",
+            "name": "Launch tryFour",
+            "request": "launch",
+            "mainClass": "tryFour",
+            "projectName": "Archivos_62034021"
+        },
+        {
+            "type": "java",
+            "name": "Launch tryThree",
+            "request": "launch",
+            "mainClass": "tryThree",
+            "projectName": "Archivos_62034021"
+        }
+    ]
+}
